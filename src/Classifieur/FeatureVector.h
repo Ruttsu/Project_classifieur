@@ -4,11 +4,25 @@
 *
 * Création Lucas.G
 * 
-*L’objet est prévu pour stocker un vecteur de caractéristique et proposer des
-méthodes pour l’exploiter. On y retrouves les méthodes suivantes:
- -
- -
- -
+*L’objet FeatureVector est prévu pour stocker un vecteur de caractéristique ainsi 
+que ça norme et proposer des méthodes pour l’exploiter. On y retrouves les méthodes 
+suivantes:
+
+ - norme qui calcul la norme du vecteur -> évolution peut être plutôt retourne la norme
+ qui est présente dans l'objet cette dernière serait calculer lors de la construction
+ de l'objet.
+
+ - size qui retourne la taille du vecteur
+
+ - l'opérateur * a été surcharger, il multiplie deux vecteurs case à case si et seulement si
+ il ont la même taille -> à réfléchire si c'est le comportement souhaité
+
+ - l'opérateur [] a été surcharger, il permet d'acceder à la case du vecteur choisi
+
+ - addFeatures qui permet d'ajouter des caratéristiques au vecteur. Cette méthode est utile
+ en attendant la définition du constructeur de la class
+
+ - displayFeatures qui permet d'afficher les informations contenu dans la class
 *
 *----------------------------------------------------------------------------*/
 
@@ -25,8 +39,20 @@ class FeatureVector
 
 public:
 
+	/*------------Définittion des méthodes---------------*/
+
 	float norme()const;
-	int size()const; //méthode qui peut être mise in line je suppose
+	int size()const; //méthode qui peut être mise in line
+
+	/*------------Définittion des opérateurs-------------*/
+
+	float operator[](int index)const;
+	FeatureVector operator*(FeatureVector& right)const;
+
+	/*-----------Méthode non demandé utile pour tester et créer la class------------------*/
+
+	void addFeatures(float a); //Méthode non demandé utile pour tester et créer la class et sans doute peut être mise in line
+	void displayFeatureVector()const;
 
 };
 

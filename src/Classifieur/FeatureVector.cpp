@@ -6,6 +6,8 @@
 /*Besoin d'un constructeur qui prend en entrée "_features" (caratéristiques) , je pense que c'est les données
 a mettre dans le vecteur !! est ce que c'est pas une copie en trop*/
 
+/*------------Définittion des méthodes---------------*/
+
 float FeatureVector::norme()const {
 
 	float result=0;
@@ -19,3 +21,57 @@ float FeatureVector::norme()const {
 
 }
 
+/*------------Définittion des opérateurs-------------*/
+
+float FeatureVector::operator[](int index)const {
+
+	if (index < _vector.size())
+	{
+		return _vector[index];
+	}
+	else
+	{
+		//return erreur
+	}
+	
+}
+
+FeatureVector FeatureVector::operator*(FeatureVector& right)const {
+
+	FeatureVector result;
+
+	if (size() == right.size())
+	{
+		for (int i = 0; i<size(); i++)
+		{
+			result._vector.push_back(_vector[i] * right[i]);
+		}
+	}
+	else
+	{
+		//return erreur les deux vecteurs ne sont pas de la même taille
+	}
+
+	result._norme = result.norme();//!!!!!! sans doute a changer mis la pour que ça compile
+
+	return result;
+
+}
+
+
+/*-----------Méthode non demandé utile pour tester et créer la class------------------*/
+
+void FeatureVector::addFeatures(float a) {
+	_vector.push_back(a);
+}
+
+void FeatureVector::displayFeatureVector()const {
+
+	cout << "La norme est : " << _norme << "\n" << endl;
+
+	for (const float& element : _vector)
+	{
+		cout << element << "\n" << endl;
+	}
+
+}
