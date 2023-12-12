@@ -40,9 +40,9 @@ FeatureVector FeatureVector::operator*(FeatureVector& right)const {
 
 	FeatureVector result;
 
-	if (size() == right.size())
+	if (getSize() == right.getSize())
 	{
-		for (int i = 0; i<size(); i++)
+		for (int i = 0; i<getSize(); i++)
 		{
 			result._vector.push_back(_vector[i] * right[i]);
 		}
@@ -63,6 +63,7 @@ FeatureVector FeatureVector::operator*(FeatureVector& right)const {
 
 void FeatureVector::addFeatures(float a) {
 	_vector.push_back(a);
+	_norme = norme();
 }
 
 void FeatureVector::displayFeatureVector()const {
