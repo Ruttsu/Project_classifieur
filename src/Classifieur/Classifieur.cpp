@@ -3,25 +3,54 @@
 
 #include "Classifieur.h"
 #include "FeatureVector.h"
+#include "KnnEuclidien.h"
+#include "KnnManhattan.h"
 
 using namespace std;
 
-int main()
-{
-	FeatureVector test, test1, test2;
+int main() {
 
-	test1.addFeatures(2);
-	test1.addFeatures(3);
+	FeatureVector test, data1, data2;
+	KnnEuclidien A;
+	KnnManhattan B;
 
-	test2.addFeatures(2);
-	test2.addFeatures(3);
+	data1.addFeatures(20);	// avec 200 = resultat sympa !
+	data1.addFeatures(19);
+	data1.addFeatures(18);
+	data1.addFeatures(17);
 
-	test = test1 * test2; // l'operateur * n'existe pas pour les vector de base
+	data2.addFeatures(150);
+	data2.addFeatures(-15);
+	data2.addFeatures(18);
+	data2.addFeatures(1);
 
+	test.addFeatures(21);
+	test.addFeatures(20);
+	test.addFeatures(19);
+	test.addFeatures(18);
+
+	cout << "Data1 : ";
+	data1.displayFeatureVector();
+	cout << "Data2 : ";
+	data2.displayFeatureVector();
+	cout << "Test : ";
 	test.displayFeatureVector();
+	cout << endl;
 
-	//cout << test1[1] << endl;
+	cout << "Méthode Euclidienne : " << endl;
+	cout << "Distance Data1 & Test : " << A.similarity(test,data1) << endl;
+	cout << "Distance Data2 & Test : " << A.similarity(test,data2) << endl;
 
+	string DataEuclidien = (A.similarity(test,data1) < A.similarity(test,data2))? "Data1":"Data2";
+	cout << DataEuclidien << " est le plus proche voisin de Test !" << endl << endl;
+
+
+	cout << "Méthode Manhattan : " << endl;
+	cout << "Distance Data1 & Test : " << B.similarity(test,data1) << endl;
+	cout << "Distance Data2 & Test : " << B.similarity(test,data2) << endl;
+
+	string DataManhatan = (B.similarity(test,data1) < B.similarity(test,data2))? "Data1":"Data2";
+	cout << DataManhatan << " est le plus proche voisin de Test !" << endl;
 
 	return 0;
 }
