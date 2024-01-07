@@ -1,28 +1,29 @@
 #pragma once
 /*---------------------------------------------------------------------------
 *
-* Création Lucas.G
+* Crï¿½ation Lucas.G
 *
-*L’objet Sample est prévu pour stocker le tag et un vecteur de cratéristiques,
-c'est deux éléments décrive l'échantillon qui correspond à une ligne dans le 
-codument txt. Cette object propose des méthodes pour l’exploiter. On y retrouves 
-les méthodes suivantes :
+*Lï¿½objet Sample est prï¿½vu pour stocker le tag et un vecteur de cratï¿½ristiques,
+c'est deux ï¿½lï¿½ments dï¿½crive l'ï¿½chantillon qui correspond ï¿½ une ligne dans le 
+codument txt. Cette object propose des mï¿½thodes pour lï¿½exploiter. On y retrouves 
+les mï¿½thodes suivantes :
 
- - tag qui permet d'attribuer un tag à la ligne (chiffre quelle represente) si
+ - tag qui permet d'attribuer un tag ï¿½ la ligne (chiffre quelle represente) si
  le chiffre est inconnu le tag=-1;
 
- - features qui permet d'ajouter une cractéristique au FeatureVector
+ - features qui permet d'ajouter une cractï¿½ristique au FeatureVector
 *
 *----------------------------------------------------------------------------*/
 #include "FeatureVector.h"
 
-class Sample{
+class Sample: public FeatureVector {
 
 	int _tag;
 	FeatureVector _features;
 
 public:
 
+	Sample();
 	void tag(int t);
 	void features(float f);
 

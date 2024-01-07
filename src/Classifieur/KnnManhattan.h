@@ -14,13 +14,13 @@ Pour l'instant à utiliser sur FeatureVector/Sample (et à la venir sur Data ? p
 
 #include "Knn.h"
 
-class KnnManhattan { //:Knn
+class KnnManhattan: protected Knn {
 public:
     KnnManhattan();
     ~KnnManhattan();
 
-    /*virtual*/ float predictSingle() ;//override;
-    /*virtual*/ float similarity(FeatureVector test, FeatureVector data) ;//override;
+    virtual float predictSingle() override;
+    virtual float similarity(Sample test, Sample data) override;
 
 };
 

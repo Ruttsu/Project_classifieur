@@ -1,10 +1,10 @@
 #include "KnnEuclidien.h"
 
-KnnEuclidien::KnnEuclidien() {}
+KnnEuclidien::KnnEuclidien(): Knn() {}
 KnnEuclidien::~KnnEuclidien() {}
 
 
-float KnnEuclidien::similarity(FeatureVector test, FeatureVector data) {
+float KnnEuclidien::similarity(Sample test, Sample data) {
 
     float somme = 0;
 	if (test.getSize() == data.getSize()) {
@@ -14,4 +14,8 @@ float KnnEuclidien::similarity(FeatureVector test, FeatureVector data) {
 	}
 
     return sqrt(somme);
+}
+
+float  KnnEuclidien::predictSingle() {
+	return 0;
 }

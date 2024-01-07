@@ -11,21 +11,22 @@ donc j'ai eu la flemme pour l'instant
 #include <vector>
 #include <cmath>
 
-#include "FeatureVector.h"
+#include "Data.h"
+#include "Sample.h"
 
 using namespace std;
 
-class Knn {
+class Knn: public Data {
 public:
     Knn();
-    ~Knn();
+    virtual ~Knn() = default;
 
     int predict();
 
 protected:
     int getKnn();
     virtual float predictSingle() = 0;
-    virtual float similarity(FeatureVector test, FeatureVector data) = 0;
+    virtual float similarity(Sample test, Sample data) = 0;
 
 };
 

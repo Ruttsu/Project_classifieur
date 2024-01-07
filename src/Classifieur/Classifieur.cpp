@@ -10,7 +10,7 @@ using namespace std;
 
 int main() {
 
-	FeatureVector test, data1, data2;
+	Sample test, data1, data2;
 	KnnEuclidien A;
 	KnnManhattan B;
 

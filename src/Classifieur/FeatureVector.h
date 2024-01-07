@@ -31,9 +31,6 @@ suivantes:
 #include <vector>
 #include <cmath>
 
-//#include "Knn.h"
-//#include "KnnEuclidien.h"
-
 using namespace std;
 
 class FeatureVector
@@ -59,9 +56,6 @@ public:
 
 	void addFeatures(float a); //M�thode non demand� utile pour tester et cr�er la class et sans doute peut �tre mise in line
 	void displayFeatureVector()const;
-
-	//friend class Knn;
-	//friend class KnnEuclidien;
 
 };
 

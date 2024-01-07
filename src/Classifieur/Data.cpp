@@ -3,11 +3,13 @@
 
 using namespace std;
 
+Data::Data() {}
+
 Data::Data(string path)
 {
 	ifstream file(path); //ouverture du fichier
 
-	//faire la vérif de l'ouverture du fichier
+	//faire la vï¿½rif de l'ouverture du fichier
 
 	file >> _nb_sample;
 	file >> _nb_features;

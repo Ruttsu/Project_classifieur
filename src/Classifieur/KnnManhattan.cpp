@@ -1,10 +1,10 @@
 #include "KnnManhattan.h"
 
-KnnManhattan::KnnManhattan() {}
+KnnManhattan::KnnManhattan(): Knn() {}
 KnnManhattan::~KnnManhattan() {}
 
 
-float KnnManhattan::similarity(FeatureVector test, FeatureVector data) {
+float KnnManhattan::similarity(Sample test, Sample data) {
 
     float somme = 0;
 	if (test.getSize() == data.getSize()) {
@@ -14,4 +14,8 @@ float KnnManhattan::similarity(FeatureVector test, FeatureVector data) {
 	}
 
     return somme;
+}
+
+float KnnManhattan::predictSingle() {
+	return 0;
 }

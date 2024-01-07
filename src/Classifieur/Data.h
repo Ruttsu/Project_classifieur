@@ -1,15 +1,15 @@
 #pragma once
 /*---------------------------------------------------------------------------
 *
-* Création Lucas.G
+* Crï¿½ation Lucas.G
 *
-*L’objet Data est prévu pour stocker un vecteur de d'échantillon ainsi que le
-le nombre de caratéristique par échantillon, et le nombre d'échantillon enregistrer
-L'objet propose des méthodes pour l’exploiter. On y retrouves les méthodes
+*Lï¿½objet Data est prï¿½vu pour stocker un vecteur de d'ï¿½chantillon ainsi que le
+le nombre de caratï¿½ristique par ï¿½chantillon, et le nombre d'ï¿½chantillon enregistrer
+L'objet propose des mï¿½thodes pour lï¿½exploiter. On y retrouves les mï¿½thodes
 suivantes:
 
 - un constructeur a qui on donne le chemin depuis la racine du document txt a
-scanner.->il va falloir l'améliorer pour dire si les échantiollon son connu ou
+scanner.->il va falloir l'amï¿½liorer pour dire si les ï¿½chantiollon son connu ou
 inconnu.
 
  - 
@@ -28,6 +28,6 @@ class Data {
 	int _nb_sample;
 
 public:
-
+	Data();
 	Data(string path);
 };
