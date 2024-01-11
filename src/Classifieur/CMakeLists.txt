@@ -3,7 +3,7 @@
 #
 
 # Ajoutez une source à l'exécutable de ce projet.
-add_executable (Classifieur "Classifieur.cpp" "Classifieur.h")
+add_executable (Classifieur "Classifieur.cpp" "Classifieur.h" "FeatureVector.cpp" "FeatureVector.h" "Sample.h" "Sample.cpp" "Data.h" "Data.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Classifieur PROPERTY CXX_STANDARD 20)
