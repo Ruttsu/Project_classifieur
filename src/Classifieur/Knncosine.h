@@ -15,9 +15,6 @@ public:
     virtual double compare(const FeatureVector& a, const FeatureVector& b) const override;
     virtual vector<Sample> findKNearestNeighbors(const FeatureVector& carac, int k) const override;
     virtual void predictSingle(const FeatureVector& carac) const override;
-
-private:
-    // Autres membres et méthodes spécifiques à KnnCosine si nécessaire
 };
 
 #endif // KNN_COSINE_H

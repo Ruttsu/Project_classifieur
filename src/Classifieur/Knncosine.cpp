@@ -10,7 +10,7 @@ using namespace std;
 KnnCosine::KnnCosine() { //constru vide ?
 }
 
-double KnnCosine::compare(const FeatureVector& a, const FeatureVector& b) const {
+double KnnCosine::similarity(const FeatureVector& a, const FeatureVector& b) const {
     // Comparaison cosine entre les FeatureVectors a et b
     double dotProduct = 0.0;
     double normA = 0.0;
@@ -28,16 +28,6 @@ double KnnCosine::compare(const FeatureVector& a, const FeatureVector& b) const 
 
     return dotProduct / (sqrt(normA) * sqrt(normB));
 } //OK similarité cosine
-
-void KnnCosine::similarity() const {
-    // Logique de calcul de similarité
-    // Utilisons simplement la première feature pour cet exemple
-    FeatureVector a = {1.0, 2.0, 3.0};  // À remplacer par votre propre exemple
-    FeatureVector b = {2.0, 3.0, 4.0};  // À remplacer par votre propre exemple
-
-    double similarity = compare(a, b);
-    std::cout << "Cosine similarity between examples: " << similarity << std::endl;
-} //potentiellement pour comparer une feature a la fois ?
 
 vector<Sample> KnnCosine::findKNearestNeighbors(const FeatureVector& carac, int k) const {
     std::vector<Sample> nearestNeighbors;

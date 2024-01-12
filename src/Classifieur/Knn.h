@@ -9,14 +9,14 @@ using namespace std;
 
 class KNN {
 public:
-    virtual double compare(const FeatureVector& a, const FeatureVector& b) const = 0;
-    virtual vector<Sample> findKNearestNeighbors(const FeatureVector& query, int k) const = 0;
-    virtual void train(const Data& trainingData) = 0;
+    knn();
+    virtual void predict(const FeatureVector& carac) const override;
 
 protected:
     virtual void getKnn() const = 0;
-    virtual void predictSingle() const = 0;
-    virtual void similarity() const = 0;
+    virtual double compare(const FeatureVector& a, const FeatureVector& b) const = 0;
+    virtual void predictSingle(const FeatureVector& carac) const = 0;
+    virtual vector<Sample> findKNearestNeighbors(const FeatureVector& query, int k) const = 0;
 };
 
 #endif // KNN_H
