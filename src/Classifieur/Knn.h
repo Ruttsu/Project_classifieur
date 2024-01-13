@@ -2,10 +2,6 @@
 #define KNN_H
 #pragma once
 
-/*-------------------------------
-Classe Virtuel qui sert à rien
-donc j'ai eu la flemme pour l'instant
---------------------------------*/
 
 #include <iostream>
 #include <vector>
@@ -21,12 +17,16 @@ public:
     Knn();
     virtual ~Knn() = default;
 
-    int predict();
+    virtual void predict(const FeatureVector& carac) const;
 
 protected:
-    int getKnn();
+    virtual void getKnn() const = 0;
     virtual float predictSingle() = 0;
-    virtual float similarity(Sample test, Sample data) = 0;
+    virtual float similarity(Sample test, Sample data) const = 0;
+    virtual double compare(const FeatureVector& a, const FeatureVector& b) const = 0;
+
+    //virtual void predictSingle(const FeatureVector& carac) const = 0;
+    //virtual vector<Sample> findKNearestNeighbors(const FeatureVector& query, int k) const = 0;
 
 };
 
