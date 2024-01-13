@@ -4,7 +4,7 @@ KnnEuclidien::KnnEuclidien(): Knn() {}
 KnnEuclidien::~KnnEuclidien() {}
 
 
-float KnnEuclidien::similarity(Sample test, Sample data) {
+float KnnEuclidien::similarity(Sample test, Sample data) const {
 
     float somme = 0;
 	if (test.getSize() == data.getSize()) {
@@ -16,6 +16,6 @@ float KnnEuclidien::similarity(Sample test, Sample data) {
     return sqrt(somme);
 }
 
-float  KnnEuclidien::predictSingle() {
+float  KnnEuclidien::predictSingle() const {
 	return 0;
 }

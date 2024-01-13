@@ -19,9 +19,8 @@ public:
     KnnEuclidien();
     ~KnnEuclidien();
 
-    virtual float predictSingle() override;
-    virtual float similarity(Sample test, Sample data) override;
-
+    virtual float predictSingle() const override;
+    virtual float similarity(Sample test, Sample data) const override;
 };
 
 #endif

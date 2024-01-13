@@ -5,6 +5,7 @@
 #include "FeatureVector.h"
 #include "KnnEuclidien.h"
 #include "KnnManhattan.h"
+#include "Knncosine.h"
 
 using namespace std;
 
@@ -13,8 +14,9 @@ int main() {
 	Sample test, data1, data2;
 	KnnEuclidien A;
 	KnnManhattan B;
+	KnnCosine C;
 
-	data1.addFeatures(20);	// avec 200 = resultat sympa !
+	data1.addFeatures(200);	// avec 200 = resultat sympa !
 	data1.addFeatures(19);
 	data1.addFeatures(18);
 	data1.addFeatures(17);
@@ -50,7 +52,15 @@ int main() {
 	cout << "Distance Data2 & Test : " << B.similarity(test,data2) << endl;
 
 	string DataManhatan = (B.similarity(test,data1) < B.similarity(test,data2))? "Data1":"Data2";
-	cout << DataManhatan << " est le plus proche voisin de Test !" << endl;
+	cout << DataManhatan << " est le plus proche voisin de Test !" << endl << endl;
+
+
+	cout << "Méthode Cosine : " << endl;
+	cout << "Distance Data1 & Test : " << C.similarity(test,data1) << endl;
+	cout << "Distance Data2 & Test : " << C.similarity(test,data2) << endl;
+
+	string DataCosine = (C.similarity(test,data1) > C.similarity(test,data2))? "Data1":"Data2";
+	cout << DataCosine << " est le plus proche voisin de Test !" << endl;
 
 	return 0;
 }

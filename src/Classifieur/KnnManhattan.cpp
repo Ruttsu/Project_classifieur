@@ -4,7 +4,7 @@ KnnManhattan::KnnManhattan(): Knn() {}
 KnnManhattan::~KnnManhattan() {}
 
 
-float KnnManhattan::similarity(Sample test, Sample data) {
+float KnnManhattan::similarity(Sample test, Sample data) const {
 
     float somme = 0;
 	if (test.getSize() == data.getSize()) {
@@ -16,6 +16,6 @@ float KnnManhattan::similarity(Sample test, Sample data) {
     return somme;
 }
 
-float KnnManhattan::predictSingle() {
+float KnnManhattan::predictSingle() const {
 	return 0;
 }

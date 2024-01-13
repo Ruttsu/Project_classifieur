@@ -1,14 +1,28 @@
 // KnnCosine.cpp
-#include "KnnCosine.h"
-#include "Sample.h"
-#include "Data.h"
-#include <cmath>
-#include <iostream>
+#include "Knncosine.h"
 
-using namespace std;
+KnnCosine::KnnCosine(): Knn() {} //constru vide ?
 
-KnnCosine::KnnCosine() { //constru vide ?
+float KnnCosine::similarity(Sample test, Sample data) const {
+
+    float result = 0;
+	if (test.getSize() == data.getSize() || test.norme() != 0 || data.norme() != 0) {
+		for (int i = 0; i<test.getSize(); i++) {
+			result += test._vector[i] * data._vector[i];
+		}
+        result /= test.norme() * data.norme();
+	}
+
+    return result;
 }
+
+float  KnnCosine::predictSingle() const {
+	return 0;
+}
+
+
+
+/* 
 
 double KnnCosine::similarity(const FeatureVector& a, const FeatureVector& b) const {
     // Comparaison cosine entre les FeatureVectors a et b
@@ -64,3 +78,5 @@ void KnnCosine::predictSingle(const FeatureVector& query) const {
         std::cerr << "No nearest neighbors found." << std::endl;
     }
 }
+
+*/
