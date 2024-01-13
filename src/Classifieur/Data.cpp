@@ -22,6 +22,11 @@ Data::Data(string path, bool donneeApprentissage)
 		Sample line;
         int nb_tours=_nb_features;
 
+        if(!donneeApprentissage)
+        {
+            line.tag(-1);
+        }
+
 		for (int j = 0; j < nb_tours; j++)
 		{
 

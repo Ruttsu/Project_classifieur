@@ -10,6 +10,8 @@ int main()
 {
     Data test("D:/Cours/INSA/Cpp/ProjetClassifieur/digits.svm", 1);
 
+    test.displayData();
+
     cout << "fini" << endl;
 	return 0;
 }
