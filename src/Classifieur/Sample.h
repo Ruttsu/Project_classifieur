@@ -12,6 +12,10 @@ les m�thodes suivantes :
  le chiffre est inconnu le tag=-1;
 
  - features qui permet d'ajouter une cract�ristique au FeatureVector
+
+ -getTag qui permet de renvoyer le tag correspondant � l'�chantillon
+
+ -displaySample qui permet d'afficher le contenu de l'�chantillon
 *
 *----------------------------------------------------------------------------*/
 #include "FeatureVector.h"
@@ -23,8 +27,16 @@ class Sample: public FeatureVector {
 
 public:
 
+    /*------------D�finittion des m�thodes---------------*/
 	Sample();
 	void tag(int t);
 	void features(float f);
+    void displaySample()const;
+
+    int getTag()const;
 
 };
+
+inline int Sample::getTag()const{
+    return _tag;
+}

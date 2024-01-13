@@ -3,13 +3,16 @@
 
 using namespace std;
 
+/*-------Définittion des constructeurs et destructeur------*/
 Data::Data() {}
-
-Data::Data(string path)
+Data::Data(string path, bool donneeApprentissage)
 {
 	ifstream file(path); //ouverture du fichier
 
-	//faire la v�rif de l'ouverture du fichier
+    if(!file.is_open())
+    {
+        throw ifstream::failure("Failed to open file");
+    }
 
 	file >> _nb_sample;
 	file >> _nb_features;
@@ -17,16 +20,25 @@ Data::Data(string path)
 	for (int i = 0; i < _nb_sample; i++)
 	{
 		Sample line;
+        int nb_tours=_nb_features;
 
-		for (int j = 0; j <= _nb_features; j++)
+        if(!donneeApprentissage)
+        {
+            line.tag(-1);
+        }
+
+		for (int j = 0; j < nb_tours; j++)
 		{
-			
+
 			float temp;
-			
-			if (j == 0 /*&& echantillon connu*/)
+
+			if (j == 0 && donneeApprentissage)
 			{
 				file >> temp;
 				line.tag(temp);
+
+				//il faut faire un tour en plus lorsque le tag de la ligne est present
+				nb_tours++;
 			}
 			else {
 				file >> temp;
@@ -37,4 +49,34 @@ Data::Data(string path)
 		}
 		_data.push_back(line);
 	}
+}
+/*-------Définittion des constructeurs et destructeur------*/
+
+void Data::displayData() const {
+
+    cout<<"Nombre d'échantillon"<<_nb_sample<<"\n"<<endl;
+    cout<<"Nombre de caratéristiques par échantillon"<<_nb_features<<"\n"<<endl;
+
+    for(const Sample& element : _data)
+    {
+        cout<<"********************************************************"<<endl;
+        element.displaySample();
+    }
+
+}
+
+/*------------Définittion des opérateurs-------------*/
+
+Sample Data::operator[](int index) const
+{
+
+    if (index < _data.size())
+    {
+        return _data[index];
+    }
+    else
+    {
+        throw out_of_range("Index is too big for operator [] of class Data");
+    }
+
 }

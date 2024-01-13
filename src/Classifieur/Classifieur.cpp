@@ -2,6 +2,7 @@
 //
 
 #include "Classifieur.h"
+#include "Data.h"
 #include "FeatureVector.h"
 #include "KnnEuclidien.h"
 #include "KnnManhattan.h"
@@ -10,6 +11,11 @@
 using namespace std;
 
 int main() {
+
+    Data test("D:/Cours/INSA/Cpp/ProjetClassifieur/digits.svm", 1);
+    test.displayData();
+    cout << "Fini de l'import" << endl << endl;
+
 
 	Sample test, data1, data2;
 	KnnEuclidien A;

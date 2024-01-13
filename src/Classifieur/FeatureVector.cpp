@@ -1,6 +1,5 @@
 #include "FeatureVector.h"
 
-/*R�flechir � l'utilister d'une class vector par rapport � la STL*/
 /*Penser � la construction et le n�cessiter des constructeur par d�faut et d�structeur*/
 
 /*Besoin d'un constructeur qui prend en entr�e "_features" (carat�ristiques) , je pense que c'est les donn�es
@@ -25,16 +24,15 @@ float FeatureVector::norme()const {
 
 float FeatureVector::operator[](int index)const {
 
-	if (index < _vector.size())
-	{
-		return _vector[index];
-	}
-	else
-	{
-		//return erreur
-		return 0;
-	}
-	
+    if (index < _vector.size())
+    {
+        return _vector[index];
+    }
+    else
+    {
+        throw out_of_range("Index is too big for operator [] of class FeatureVector");
+    }
+
 }
 
 FeatureVector FeatureVector::operator*(FeatureVector& right)const {
