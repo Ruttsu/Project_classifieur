@@ -2,26 +2,14 @@
 //
 
 #include "Classifieur.h"
-#include "FeatureVector.h"
+#include "Data.h"
 
 using namespace std;
 
 int main()
 {
-	FeatureVector test, test1, test2;
+    Data test("D:/Cours/INSA/Cpp/ProjetClassifieur/digits.svm", 1);
 
-	test1.addFeatures(2);
-	test1.addFeatures(3);
-
-	test2.addFeatures(2);
-	test2.addFeatures(3);
-
-	test = test1 * test2; // l'operateur * n'existe pas pour les vector de base
-
-	test.displayFeatureVector();
-
-	//cout << test1[1] << endl;
-
-
+    cout << "fini" << endl;
 	return 0;
 }

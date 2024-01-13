@@ -3,11 +3,11 @@
 
 using namespace std;
 
-Data::Data(string path)
+Data::Data(string path, bool donneeApprentissage)
 {
 	ifstream file(path); //ouverture du fichier
 
-	//faire la vérif de l'ouverture du fichier
+	//faire la vÃ©rif de l'ouverture du fichier
 
 	file >> _nb_sample;
 	file >> _nb_features;
@@ -15,16 +15,20 @@ Data::Data(string path)
 	for (int i = 0; i < _nb_sample; i++)
 	{
 		Sample line;
+        int nb_tours=_nb_features;
 
-		for (int j = 0; j <= _nb_features; j++)
+		for (int j = 0; j < nb_tours; j++)
 		{
-			
+
 			float temp;
-			
-			if (j == 0 /*&& echantillon connu*/)
+
+			if (j == 0 && donneeApprentissage)
 			{
 				file >> temp;
 				line.tag(temp);
+
+				//il faut faire un tour en plus lorsque le tag de la ligne est present
+				nb_tours++;
 			}
 			else {
 				file >> temp;
