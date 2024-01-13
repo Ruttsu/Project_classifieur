@@ -1,11 +1,11 @@
 #include "FeatureVector.h"
 
-/*Penser à la construction et le nécessiter des constructeur par défaut et déstructeur*/
+/*Penser ï¿½ la construction et le nï¿½cessiter des constructeur par dï¿½faut et dï¿½structeur*/
 
-/*Besoin d'un constructeur qui prend en entrée "_features" (caratéristiques) , je pense que c'est les données
+/*Besoin d'un constructeur qui prend en entrï¿½e "_features" (caratï¿½ristiques) , je pense que c'est les donnï¿½es
 a mettre dans le vecteur !! est ce que c'est pas une copie en trop*/
 
-/*------------Définittion des méthodes---------------*/
+/*------------Dï¿½finittion des mï¿½thodes---------------*/
 
 float FeatureVector::norme()const {
 
@@ -20,7 +20,7 @@ float FeatureVector::norme()const {
 
 }
 
-/*------------Définittion des opérateurs-------------*/
+/*------------Dï¿½finittion des opï¿½rateurs-------------*/
 
 float FeatureVector::operator[](int index)const {
 
@@ -48,17 +48,17 @@ FeatureVector FeatureVector::operator*(FeatureVector& right)const {
 	}
 	else
 	{
-		//return erreur les deux vecteurs ne sont pas de la même taille
+		//return erreur les deux vecteurs ne sont pas de la mï¿½me taille
 	}
 
-	result._norme = result.norme();//!!!!!! sans doute a changer mis la pour que ça compile
+	result._norme = result.norme();//!!!!!! sans doute a changer mis la pour que ï¿½a compile
 
 	return result;
 
 }
 
 
-/*-----------Méthode non demandé utile pour tester et créer la class------------------*/
+/*-----------Mï¿½thode non demandï¿½ utile pour tester et crï¿½er la class------------------*/
 
 void FeatureVector::addFeatures(float a) {
 	_vector.push_back(a);
@@ -67,11 +67,12 @@ void FeatureVector::addFeatures(float a) {
 
 void FeatureVector::displayFeatureVector()const {
 
-	cout << "La norme est : " << _norme << "\n" << endl;
+	cout << "La norme est : " << _norme << endl;
+	cout << "Le vecteur est : ";
 
 	for (const float& element : _vector)
 	{
-		cout << element << endl;
+		cout << element << " ";
 	}
-
+	cout << endl;
 }

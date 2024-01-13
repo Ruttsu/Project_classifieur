@@ -2,25 +2,25 @@
 
 /*---------------------------------------------------------------------------
 *
-* Création Lucas.G
+* Crï¿½ation Lucas.G
 * 
-*L’objet FeatureVector est prévu pour stocker un vecteur de caractéristique ainsi 
-que ça norme et proposer des méthodes pour l’exploiter. On y retrouves les méthodes 
+*Lï¿½objet FeatureVector est prï¿½vu pour stocker un vecteur de caractï¿½ristique ainsi 
+que ï¿½a norme et proposer des mï¿½thodes pour lï¿½exploiter. On y retrouves les mï¿½thodes 
 suivantes:
 
  - norme qui calcul la norme du vecteur
 
- - getSize qui retourne la taille du vecteur (méthode inline)
+ - getSize qui retourne la taille du vecteur (mï¿½thode inline)
 
- - getNorme est une méthode inline pour obtenir la norme
+ - getNorme est une mï¿½thode inline pour obtenir la norme
 
- - l'opérateur * a été surcharger, il multiplie deux vecteurs case à case si et seulement si
- il ont la même taille -> à réfléchire si c'est le comportement souhaité
+ - l'opï¿½rateur * a ï¿½tï¿½ surcharger, il multiplie deux vecteurs case ï¿½ case si et seulement si
+ il ont la mï¿½me taille -> ï¿½ rï¿½flï¿½chire si c'est le comportement souhaitï¿½
 
- - l'opérateur [] a été surcharger, il permet d'acceder à la case du vecteur choisi
+ - l'opï¿½rateur [] a ï¿½tï¿½ surcharger, il permet d'acceder ï¿½ la case du vecteur choisi
 
- - addFeatures qui permet d'ajouter des caratéristiques au vecteur. Cette méthode est utile
- en attendant la définition du constructeur de la class. Elle recalcule la norme du vecteur
+ - addFeatures qui permet d'ajouter des caratï¿½ristiques au vecteur. Cette mï¿½thode est utile
+ en attendant la dï¿½finition du constructeur de la class. Elle recalcule la norme du vecteur
  a chaque ajout.
 
  - displayFeatures qui permet d'afficher les informations contenu dans la class
@@ -35,25 +35,26 @@ using namespace std;
 
 class FeatureVector
 {
+public:
 	float _norme;
 	vector <float> _vector;
 
-public:
+//public:
 
-	/*------------Définittion des méthodes---------------*/
+	/*------------Dï¿½finittion des mï¿½thodes---------------*/
 
 	float norme()const;
-	int getSize()const; //méthode qui peut être mise in line
+	int getSize()const; //mï¿½thode qui peut ï¿½tre mise in line
 	float getNorme()const;
 
-	/*------------Définittion des opérateurs-------------*/
+	/*------------Dï¿½finittion des opï¿½rateurs-------------*/
 
 	float operator[](int index)const;
 	FeatureVector operator*(FeatureVector& right)const;
 
-	/*-----------Méthode non demandé utile pour tester et créer la class------------------*/
+	/*-----------Mï¿½thode non demandï¿½ utile pour tester et crï¿½er la class------------------*/
 
-	void addFeatures(float a); //Méthode non demandé utile pour tester et créer la class et sans doute peut être mise in line
+	void addFeatures(float a); //Mï¿½thode non demandï¿½ utile pour tester et crï¿½er la class et sans doute peut ï¿½tre mise in line
 	void displayFeatureVector()const;
 
 };

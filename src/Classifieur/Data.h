@@ -33,7 +33,7 @@ class Data {
 	int _nb_sample;
 
 public:
-
+	Data();
     /*-------Définittion des constructeurs et destructeur------*/
 	Data(string path, bool donneeApprentissage);
 
