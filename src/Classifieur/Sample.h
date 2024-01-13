@@ -26,9 +26,8 @@ class Sample: public FeatureVector {
 	FeatureVector _features;
 
 public:
-
-    /*------------D�finittion des m�thodes---------------*/
 	Sample();
+    /*------------D�finittion des m�thodes---------------*/
 	void tag(int t);
 	void features(float f);
     void displaySample()const;
