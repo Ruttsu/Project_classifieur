@@ -13,7 +13,7 @@ Data::Data(string path, bool donneeApprentissage)
     {
         throw ifstream::failure("Failed to open file");
     }
-	
+
 	file >> _nb_sample;
 	file >> _nb_features;
 
@@ -44,6 +44,20 @@ Data::Data(string path, bool donneeApprentissage)
 		}
 		_data.push_back(line);
 	}
+}
+/*-------Définittion des constructeurs et destructeur------*/
+
+void Data::displayData() const {
+
+    cout<<"Nombre d'échantillon"<<_nb_sample<<"\n"<<endl;
+    cout<<"Nombre de caratéristiques par échantillon"<<_nb_features<<"\n"<<endl;
+
+    for(const Sample& element : _data)
+    {
+        cout<<"********************************************************"<<endl;
+        element.displaySample();
+    }
+
 }
 
 /*------------Définittion des opérateurs-------------*/

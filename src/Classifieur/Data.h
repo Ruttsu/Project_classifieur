@@ -16,6 +16,8 @@ c'est des données d'appprentissage et 0 si c'est des données a définir.
 
  - getNbSample qui retourne le nombre de ligne dans le fichier / le nombre de chiffre
  représenté
+
+ -displayData qui permet d'afficher le contenu de data
 *
 *----------------------------------------------------------------------------*/
 
@@ -38,6 +40,8 @@ public:
     /*------------Définittion des méthodes---------------*/
     int getNbFeatures()const;
     int getNbSample()const;
+
+    void displayData()const;
 
     /*------------Définittion des opérateurs-------------*/
     Sample operator[](int index)const;

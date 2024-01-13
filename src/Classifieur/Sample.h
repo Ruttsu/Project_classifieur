@@ -12,6 +12,10 @@ les méthodes suivantes :
  le chiffre est inconnu le tag=-1;
 
  - features qui permet d'ajouter une cractéristique au FeatureVector
+
+ -getTag qui permet de renvoyer le tag correspondant à l'échantillon
+
+ -displaySample qui permet d'afficher le contenu de l'échantillon
 *
 *----------------------------------------------------------------------------*/
 #include "FeatureVector.h"
@@ -23,7 +27,15 @@ class Sample{
 
 public:
 
+    /*------------Définittion des méthodes---------------*/
 	void tag(int t);
 	void features(float f);
+    void displaySample()const;
+
+    int getTag()const;
 
 };
+
+inline int Sample::getTag()const{
+    return _tag;
+}

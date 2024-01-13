@@ -71,7 +71,7 @@ void FeatureVector::displayFeatureVector()const {
 
 	for (const float& element : _vector)
 	{
-		cout << element << "\n" << endl;
+		cout << element << endl;
 	}
 
 }
