@@ -1,6 +1,5 @@
 #include "FeatureVector.h"
 
-/*Réflechir à l'utilister d'une class vector par rapport à la STL*/
 /*Penser à la construction et le nécessiter des constructeur par défaut et déstructeur*/
 
 /*Besoin d'un constructeur qui prend en entrée "_features" (caratéristiques) , je pense que c'est les données
@@ -25,15 +24,15 @@ float FeatureVector::norme()const {
 
 float FeatureVector::operator[](int index)const {
 
-	if (index < _vector.size())
-	{
-		return _vector[index];
-	}
-	else
-	{
-		//return erreur
-	}
-	
+    if (index < _vector.size())
+    {
+        return _vector[index];
+    }
+    else
+    {
+        throw out_of_range("Index is too big for operator [] of class FeatureVector");
+    }
+
 }
 
 FeatureVector FeatureVector::operator*(FeatureVector& right)const {
@@ -72,7 +71,7 @@ void FeatureVector::displayFeatureVector()const {
 
 	for (const float& element : _vector)
 	{
-		cout << element << "\n" << endl;
+		cout << element << endl;
 	}
 
 }

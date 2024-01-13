@@ -1,18 +1,23 @@
 #pragma once
 /*---------------------------------------------------------------------------
 *
-* CrÈation Lucas.G
+* CrÔøΩation Lucas.G
 *
-*Líobjet Data est prÈvu pour stocker un vecteur de d'Èchantillon ainsi que le
-le nombre de caratÈristique par Èchantillon, et le nombre d'Èchantillon enregistrer
-L'objet propose des mÈthodes pour líexploiter. On y retrouves les mÈthodes
+*LÔøΩobjet Data est prÔøΩvu pour stocker un vecteur de d'ÔøΩchantillon ainsi que le
+le nombre de caratÔøΩristique par ÔøΩchantillon, et le nombre d'ÔøΩchantillon enregistrer
+L'objet propose des mÔøΩthodes pour lÔøΩexploiter. On y retrouves les mÔøΩthodes
 suivantes:
 
 - un constructeur a qui on donne le chemin depuis la racine du document txt a
-scanner.->il va falloir l'amÈliorer pour dire si les Èchantiollon son connu ou
-inconnu.
+scanner. En deuxi√®me param√®tre il faut lui passer une valeur bool√©enne 1 si
+c'est des donn√©es d'appprentissage et 0 si c'est des donn√©es a d√©finir.
 
- - 
+ - getNbFeatures qui retourne le nombre de carat√©ristique par ligne dans le fichier
+
+ - getNbSample qui retourne le nombre de ligne dans le fichier / le nombre de chiffre
+ repr√©sent√©
+
+ -displayData qui permet d'afficher le contenu de data
 *
 *----------------------------------------------------------------------------*/
 
@@ -29,5 +34,23 @@ class Data {
 
 public:
 
-	Data(string path);
+    /*-------D√©finittion des constructeurs et destructeur------*/
+	Data(string path, bool donneeApprentissage);
+
+    /*------------D√©finittion des m√©thodes---------------*/
+    int getNbFeatures()const;
+    int getNbSample()const;
+
+    void displayData()const;
+
+    /*------------D√©finittion des op√©rateurs-------------*/
+    Sample operator[](int index)const;
 };
+/*---------------------------------------------------------------------------*/
+inline int Data::getNbFeatures()const {
+    return _nb_features;
+}
+
+inline int Data::getNbSample()const{
+    return _nb_sample;
+}
