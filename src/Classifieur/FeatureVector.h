@@ -10,7 +10,7 @@ suivantes:
 
  - norme qui calcul la norme du vecteur
 
- - size qui retourne la taille du vecteur (méthode inline)
+ - getSize qui retourne la taille du vecteur (méthode inline)
 
  - getNorme est une méthode inline pour obtenir la norme
 

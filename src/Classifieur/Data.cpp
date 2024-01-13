@@ -3,12 +3,17 @@
 
 using namespace std;
 
+/*-------Définittion des constructeurs et destructeur------*/
+
 Data::Data(string path, bool donneeApprentissage)
 {
 	ifstream file(path); //ouverture du fichier
 
-	//faire la vérif de l'ouverture du fichier
-
+    if(!file.is_open())
+    {
+        throw ifstream::failure("Failed to open file");
+    }
+	
 	file >> _nb_sample;
 	file >> _nb_features;
 
@@ -39,4 +44,20 @@ Data::Data(string path, bool donneeApprentissage)
 		}
 		_data.push_back(line);
 	}
+}
+
+/*------------Définittion des opérateurs-------------*/
+
+Sample Data::operator[](int index) const
+{
+
+    if (index < _data.size())
+    {
+        return _data[index];
+    }
+    else
+    {
+        throw out_of_range("Index is too big for operator [] of class Data");
+    }
+
 }
