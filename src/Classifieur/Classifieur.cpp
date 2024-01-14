@@ -6,12 +6,13 @@
 #include "KnnEuclidien.h"
 #include "KnnManhattan.h"
 #include "Knncosine.h"
+#include "ClassificationReport.h"
 
 using namespace std;
 
 int main() {
-
-    Data file("../../doc/Digits/Digits/digits.svm", 1);
+/*
+    Data file("D:/Cours/INSA/Cpp/ProjetClassifieur/doc/Digits/Digits/digits.svm", 1);
     file.displayData();
     cout << "Fini de l'import" << endl << endl;
 
@@ -66,6 +67,26 @@ int main() {
 
 	string DataCosine = (C.similarity(test,data1) > C.similarity(test,data2))? "Data1":"Data2";
 	cout << DataCosine << " est le plus proche voisin de Test !" << endl;
+*/
+
+ClassificationReport test;
+
+test.displayTabConfusion();
+
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+
+test.displayTabConfusion();
 
 	return 0;
 }
