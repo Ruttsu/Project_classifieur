@@ -11,9 +11,10 @@ using namespace std;
 
 int main() {
 
-    Data file("../../doc/Digits/Digits/digits.svm", 1);
+    Data file("C:/Users/Jerome/Documents/source/Project_classifieur/doc/Digits/digits.svm", 1);
     file.displayData();
-    cout << "Fini de l'import" << endl << endl;
+
+    cout << "Fini de l'import" << endl;
 
 
 	Sample test, data1, data2;
