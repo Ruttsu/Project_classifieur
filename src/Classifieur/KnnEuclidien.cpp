@@ -5,7 +5,7 @@ KnnEuclidien::~KnnEuclidien() {}
 
 
 float KnnEuclidien::similarity(Sample test, Sample data) const {
-
+	cout << "Size Euclide : " << data.getSize() <<endl;
     float somme = 0;
 	if (test.getSize() == data.getSize()) {
 		for (int i = 0; i<test.getSize(); i++) {

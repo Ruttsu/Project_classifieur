@@ -27,15 +27,21 @@ class Sample: public FeatureVector {
 
 public:
 	Sample();
+	Sample(int tag, initializer_list<float> args);
     /*------------D�finittion des m�thodes---------------*/
 	void tag(int t);
 	void features(float f);
     void displaySample()const;
 
     int getTag()const;
+	//int getSize() const;
 
 };
 
 inline int Sample::getTag()const{
     return _tag;
 }
+/*
+inline int Sample::getSize()const {
+	return _features.getSize();
+}*/

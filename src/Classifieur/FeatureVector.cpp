@@ -5,13 +5,23 @@
 /*Besoin d'un constructeur qui prend en entr�e "_features" (carat�ristiques) , je pense que c'est les donn�es
 a mettre dans le vecteur !! est ce que c'est pas une copie en trop*/
 
+FeatureVector::FeatureVector() {}
+
+FeatureVector::FeatureVector(initializer_list<float> args) {
+	for (float a:args) {
+		_vector.push_back(a);
+	}
+	_norme = norme();
+}
+
+
 /*------------D�finittion des m�thodes---------------*/
 
 float FeatureVector::norme()const {
 
 	float result=0;
 
-	for (const float& element : _vector)
+	for (const float element : _vector)
 	{
 		result += pow(element, 2);
 	}
