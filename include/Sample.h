@@ -20,22 +20,35 @@ les m�thodes suivantes :
 *----------------------------------------------------------------------------*/
 #include "FeatureVector.h"
 
-class Sample: public FeatureVector {
-
+class Sample {
 	int _tag;
 	FeatureVector _features;
 
 public:
+	/*------------Constructeur---------------*/
 	Sample();
-    /*------------D�finittion des m�thodes---------------*/
+
+    /*------------Definittion des methodes---------------*/
 	void tag(int t);
 	void features(float f);
     void displaySample()const;
-
     int getTag()const;
+	//int getFeaturesSize() const;
+	//float getNorme() const;
 
 };
 
 inline int Sample::getTag()const{
     return _tag;
 }
+
+//Pas utile a mon avis
+/*
+inline int Sample::getFeaturesSize()const{
+    return _features.getSize();
+}
+
+inline float Sample::getNorme() const{
+    return _features.getNorme();
+}
+*/

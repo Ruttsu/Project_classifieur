@@ -3,16 +3,6 @@
 
 Knn::Knn() {}
 
-// Implémentation des méthodes virtuelles pures de la classe de base KNN
-double Knn::compare(const FeatureVector& a, const FeatureVector& b) const {
-    // À implémenter
-    return 0.0;
-}
-
-vector<Sample> Knn::findKNearestNeighbors(const FeatureVector& query, int k) const {
-    // À implémenter 
-    return {};
-}
 
 void Knn::predict(const FeatureVector& carac) const {
     // À implémenter
@@ -22,7 +12,7 @@ void Knn::getKnn() const {
     // À implémenter
 }
 
-float Knn::predictSingle() const {
+std::vector<std::pair<double, size_t>> Knn::predictSingle(const FeatureVector& test, int k) const {
     // À implémenter 
-    return 0;
+    return std::vector<std::pair<double, size_t>>();
 }

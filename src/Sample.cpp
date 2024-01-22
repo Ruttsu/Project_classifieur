@@ -1,6 +1,6 @@
 #include "Sample.h"
 
-Sample::Sample(): FeatureVector() {}
+Sample::Sample() {} //constru vide
 
 /*------------Définittion des méthodes---------------*/
 void Sample::tag(int t) {

@@ -1,53 +1,33 @@
 // KnnCosine.cpp
 #include "Knncosine.h"
+#include <vector>
+#include <utility> // pour std::pair
+#include <algorithm> // pour std::sort
+
+using namespace std;
 
 KnnCosine::KnnCosine(): Knn() {} //constru vide ?
 
-float KnnCosine::similarity(Sample test, Sample data) const {
+float KnnCosine::similarity(FeatureVector test, FeatureVector data) const {
 
     float result = 0;
-	if (test.getSize() == data.getSize() || test.norme() != 0 || data.norme() != 0) {
-		for (int i = 0; i<test.getSize(); i++) {
+	if (test.getSize() == data.getSize() && test.getNorme() != 0 && data.getNorme() != 0) {
+		for (int i = 0; i < test.getSize(); i++) {
 			result += test._vector[i] * data._vector[i];
 		}
-        result /= test.norme() * data.norme();
+        result /= test.getNorme() * data.getNorme();
 	}
 
     return result;
 }
 
-float  KnnCosine::predictSingle() const {
-	return 0;
-}
 
-
-
-/* 
-
-double KnnCosine::similarity(const FeatureVector& a, const FeatureVector& b) const {
-    // Comparaison cosine entre les FeatureVectors a et b
-    double dotProduct = 0.0;
-    double normA = 0.0;
-    double normB = 0.0;
-
-    for (size_t i = 0; i < a.size(); ++i) {
-        dotProduct += a[i] * b[i];
-        normA += std::pow(a[i], 2);
-        normB += std::pow(b[i], 2);
-    }
-
-    if (normA == 0.0 || normB == 0.0) {
-        return 0.0;  // Éviter une division par zéro
-    }
-
-    return dotProduct / (sqrt(normA) * sqrt(normB));
-} //OK similarité cosine
-
-vector<Sample> KnnCosine::findKNearestNeighbors(const FeatureVector& carac, int k) const {
+std::vector<std::pair<double, size_t>> KnnCosine::predictSingle(const FeatureVector& test, int k) const {
+    /*
     std::vector<Sample> nearestNeighbors;
 
     // Utilisons une structure de données pour stocker la similarité cosine et l'indice original
-    vector<std::pair<double, size_t>> cosineSimilarities;
+    std::vector<std::pair<double, size_t>> cosineSimilarities;
 
     for (size_t i = 0; i < trainingData_.size(); ++i) {
         const FeatureVector& currentFeatures = trainingData_[i].getFeatures();
@@ -59,24 +39,15 @@ vector<Sample> KnnCosine::findKNearestNeighbors(const FeatureVector& carac, int 
     std::sort(cosineSimilarities.rbegin(), cosineSimilarities.rend());
 
     // Sélection des k plus proches voisins
+    std::vector<std::pair<double, size_t>> nearestNeighborsPairs;
     for (int i = 0; i < k; ++i) {
-        size_t index = cosineSimilarities[i].second;
-        nearestNeighbors.push_back(trainingData_[index]);
+        nearestNeighborsPairs.push_back(cosineSimilarities[i]);
     }
+   
 
-    return nearestNeighbors;
+    return nearestNeighborsPairs;
+     */
+
+    return std::vector<std::pair<double, size_t>>();
 }
 
-void KnnCosine::predictSingle(const FeatureVector& query) const {
-    std::vector<Sample> nearestNeighbors = findKNearestNeighbors(query, 1);
-
-    if (!nearestNeighbors.empty()) {
-        const Sample& nearestNeighbor = nearestNeighbors[0];
-        // TODO: Utiliser nearestNeighbor pour effectuer la prédiction pour l'exemple unique
-        std::cout << "Predicting for a single example using KnnCosine." << std::endl;
-    } else {
-        std::cerr << "No nearest neighbors found." << std::endl;
-    }
-}
-
-*/
