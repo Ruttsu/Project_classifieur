@@ -10,15 +10,6 @@
 
 using namespace std;
 
-void afficherMenu()
-{
-    cout << "Commandes disponibles (entrer la numéro de la commande):" << endl;
-    cout << "1. Définir les fichiers d'entrer" << endl;
-    cout << "2. Choisir la valeur de k <valeur>" << endl;
-    cout << "3. Afficher les résultats" << endl;
-    cout << "0. Quitter" << endl;
-}
-
 int main() {
 
 
@@ -27,11 +18,29 @@ int main() {
     cin >> path;
     Data dataApprentissage(path,1);
 
-    dataApprentissage.displayData();
+    //dataApprentissage.displayData();
 
-   /* Data file("D:/Cours/INSA/Cpp/ProjetClassifieur/doc/Digits/Digits/digits.svm", 1);
-    file.displayData();
-    */
+    int k;
+    cout << "Attribuez la valeur de k :" << endl;
+    cin >> k;
+
+    //cout << "La valeur de k est :" << endl;
+
+    path="";
+    cout << "Donnez le chemin du fichiers a determiner :" << endl;
+    cin >> path;
+    Data dataEntrainement(path, 0);
+
+    //dataEntrainement.displayData();
+
+    //Faire les calculs des Knn
+
+    //Demander de display les prediction en selon quel Knn
+
+    //Veut tu changers k
+
+    //afficher les donner de compréhension
+
 /*
     int commande;
     //donner a mettre dans les bonnes class
@@ -96,4 +105,14 @@ test.displayTabConfusion();
 
     test.displayTabConfusion();*/
 	return 0;
+}
+
+
+void afficherMenu()
+{
+    cout << "Commandes disponibles (entrer la numéro de la commande):" << endl;
+    cout << "1. Définir les fichiers d'entrer" << endl;
+    cout << "2. Choisir la valeur de k <valeur>" << endl;
+    cout << "3. Afficher les résultats" << endl;
+    cout << "0. Quitter" << endl;
 }
