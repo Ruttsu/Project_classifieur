@@ -16,17 +16,17 @@ using namespace std;
 
 class Knn {
 
-    Data _lazy_train;
-
 public:
-    Knn();
+    Knn(Data trainingdata);
     virtual ~Knn() = default;
     virtual void predict(const FeatureVector& carac) const;
 
 protected:
     virtual void getKnn() const ;    //= 0;
     virtual std::vector<std::pair<double, size_t>> predictSingle(const FeatureVector& test, int k) const = 0;
-    virtual float similarity(FeatureVector test, FeatureVector data) const = 0;
+    virtual float similarity(const FeatureVector& test, const FeatureVector& data) const = 0;
+
+    Data _lazy_train; //protected pour etre accessible par KnnAlgo
 };
 
 #endif

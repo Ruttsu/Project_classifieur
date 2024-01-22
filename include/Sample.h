@@ -30,25 +30,16 @@ public:
 
     /*------------Definittion des methodes---------------*/
 	void tag(int t);
-	void features(float f);
+	const FeatureVector& getFeatures() const; //getter qui retourne le Feature vector associé, je pense que c'est l'équivalent de la surcharge crochet de sample
     void displaySample()const;
     int getTag()const;
-	//int getFeaturesSize() const;
-	//float getNorme() const;
-
+	void features(float f);
 };
 
-inline int Sample::getTag()const{
+inline int Sample::getTag() const {
     return _tag;
 }
 
-//Pas utile a mon avis
-/*
-inline int Sample::getFeaturesSize()const{
-    return _features.getSize();
+inline const FeatureVector& Sample::getFeatures() const {
+    return _features;
 }
-
-inline float Sample::getNorme() const{
-    return _features.getNorme();
-}
-*/

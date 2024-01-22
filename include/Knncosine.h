@@ -6,10 +6,10 @@
 
 class KnnCosine : public Knn {
 public:
-    KnnCosine();
+    KnnCosine(const Data& trainingData);
 
     virtual std::vector<std::pair<double, size_t>> predictSingle(const FeatureVector& test, int k) const;
-    virtual float similarity(FeatureVector test, FeatureVector data) const override;
+    virtual float similarity(const FeatureVector& test, const FeatureVector& data) const override;
 };
 
 #endif // KNN_COSINE_H

@@ -67,7 +67,7 @@ void Data::displayData() const {
 
 /*------------Définittion des opérateurs-------------*/
 
-Sample Data::operator[](int index) const
+Sample Data::operator[](unsigned int index) const 
 {
 
     if (index < _data.size())
@@ -80,3 +80,17 @@ Sample Data::operator[](int index) const
     }
 
 }
+
+/*
+const std::vector<float>& Data::aspirelesdonnees() const {
+
+    std::vector<float> featuresArray;
+
+    for (const Sample& sample : _data) {
+        const std::vector<float>& sampleFeatures = sample.getFeatures().getVector();
+        featuresArray.insert(featuresArray.end(), sampleFeatures.begin(), sampleFeatures.end());
+    }
+
+    return featuresArray;
+}
+*/

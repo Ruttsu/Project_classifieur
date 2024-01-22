@@ -1,7 +1,8 @@
 // KNN.cpp
 #include "Knn.h"
 
-Knn::Knn() {}
+Knn::Knn(Data trainingdata) : _lazy_train(trainingdata) { //constru avec les datas d'entrainement en param
+}
 
 
 void Knn::predict(const FeatureVector& carac) const {
