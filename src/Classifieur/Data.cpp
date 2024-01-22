@@ -24,7 +24,7 @@ Data::Data(string path, bool donneeApprentissage)
 
         if(!donneeApprentissage)
         {
-            line.tag(-1);
+            line.setTag(-1);
         }
 
 		for (int j = 0; j < nb_tours; j++)
@@ -35,14 +35,14 @@ Data::Data(string path, bool donneeApprentissage)
 			if (j == 0 && donneeApprentissage)
 			{
 				file >> temp;
-				line.tag(temp);
+				line.setTag(temp);
 
 				//il faut faire un tour en plus lorsque le tag de la ligne est present
 				nb_tours++;
 			}
 			else {
 				file >> temp;
-				line.features(temp);
+				line.setFeatures(temp);
 
 			}
 			
