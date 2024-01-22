@@ -8,10 +8,10 @@ c'est deux �l�ments d�crive l'�chantillon qui correspond � une ligne d
 codument txt. Cette object propose des m�thodes pour l�exploiter. On y retrouves 
 les m�thodes suivantes :
 
- - tag qui permet d'attribuer un tag � la ligne (chiffre quelle represente) si
+ - setTag qui permet d'attribuer un tag � la ligne (chiffre quelle represente) si
  le chiffre est inconnu le tag=-1;
 
- - features qui permet d'ajouter une cract�ristique au FeatureVector
+ - setFeatures qui permet d'ajouter une cract�ristique au FeatureVector
 
  -getTag qui permet de renvoyer le tag correspondant � l'�chantillon
 
@@ -22,14 +22,15 @@ les m�thodes suivantes :
 
 class Sample: public FeatureVector {
 
+private:
 	int _tag;
 	FeatureVector _features;
 
 public:
 	Sample();
     /*------------D�finittion des m�thodes---------------*/
-	void tag(int t);
-	void features(float f);
+	void setTag(int t);
+	void setFeatures(float f);
     void displaySample()const;
 
     int getTag()const;

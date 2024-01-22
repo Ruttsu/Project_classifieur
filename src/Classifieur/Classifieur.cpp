@@ -20,7 +20,7 @@ void afficherMenu()
 }
 
 int main() {
-/*
+
     Data file("D:/Cours/INSA/Cpp/ProjetClassifieur/doc/Digits/Digits/digits.svm", 1);
     file.displayData();
     cout << "Fini de l'import" << endl << endl;
@@ -76,12 +76,11 @@ int main() {
 
 	string DataCosine = (C.similarity(test,data1) > C.similarity(test,data2))? "Data1":"Data2";
 	cout << DataCosine << " est le plus proche voisin de Test !" << endl;
-*/
 
-
+/*
     int commande;
     //donner a mettre dans les bonnes class
-    int k;
+    int k=1;
     string path;
     bool donneeApprentissage;
 
@@ -122,7 +121,7 @@ int main() {
 
 
 
-/* TEST de la class classificationReport
+//TEST de la class classificationReport
 ClassificationReport test;
 
 test.displayTabConfusion();
@@ -140,7 +139,6 @@ test.displayTabConfusion();
     test.setTabConfusion(1,1);
     test.setTabConfusion(1,1);
 
-    test.displayTabConfusion();
-*/
+    test.displayTabConfusion();*/
 	return 0;
 }

@@ -3,11 +3,11 @@
 Sample::Sample(): FeatureVector() {}
 
 /*------------Définittion des méthodes---------------*/
-void Sample::tag(int t) {
+void Sample::setTag(int t) {
 	_tag = t;
 }
 
-void Sample::features(float f) {
+void Sample::setFeatures(float f) {
 	_features.addFeatures(f);
 }
 

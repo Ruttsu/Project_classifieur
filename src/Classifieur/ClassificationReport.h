@@ -20,6 +20,7 @@ using namespace std;
 
 class ClassificationReport{
 
+private:
     int _tab_confusion[10][10]={};
 
 public:
