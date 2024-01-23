@@ -67,7 +67,7 @@ void Data::displayData() const {
 
 /*------------Définittion des opérateurs-------------*/
 
-Sample Data::operator[](int index) const
+Sample Data::operator[](unsigned int index) const 
 {
 
     if (index < _data.size())
