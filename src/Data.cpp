@@ -24,7 +24,7 @@ Data::Data(string path, bool donneeApprentissage)
 
         if(!donneeApprentissage)
         {
-            line.setTag(-1);
+            line.tag(-1);
         }
 
 		for (int j = 0; j < nb_tours; j++)
@@ -35,14 +35,14 @@ Data::Data(string path, bool donneeApprentissage)
 			if (j == 0 && donneeApprentissage)
 			{
 				file >> temp;
-				line.setTag(temp);
+				line.tag(temp);
 
 				//il faut faire un tour en plus lorsque le tag de la ligne est present
 				nb_tours++;
 			}
 			else {
 				file >> temp;
-				line.setFeatures(temp);
+				line.features(temp);
 
 			}
 			
@@ -67,7 +67,7 @@ void Data::displayData() const {
 
 /*------------Définittion des opérateurs-------------*/
 
-Sample Data::operator[](int index) const
+Sample Data::operator[](unsigned int index) const 
 {
 
     if (index < _data.size())

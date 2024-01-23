@@ -22,7 +22,7 @@ float FeatureVector::norme()const {
 
 /*------------D�finittion des op�rateurs-------------*/
 
-float FeatureVector::operator[](int index)const {
+float FeatureVector::operator[](unsigned int index)const {
 
     if (index < _vector.size())
     {

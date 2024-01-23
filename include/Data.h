@@ -41,11 +41,10 @@ public:
     /*------------Définittion des méthodes---------------*/
     int getNbFeatures()const;
     int getNbSample()const;
-
     void displayData()const;
 
     /*------------Définittion des opérateurs-------------*/
-    Sample operator[](int index)const;
+    Sample operator[](unsigned int index)const; //unsigned car la fonction size de la stl renvoie un unsigned
 };
 /*---------------------------------------------------------------------------*/
 inline int Data::getNbFeatures()const {

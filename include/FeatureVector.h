@@ -46,10 +46,11 @@ public:
 	float norme()const;
 	int getSize()const; //m�thode qui peut �tre mise in line
 	float getNorme()const;
+	const std::vector<float>& getVector() const;
 
 	/*------------D�finittion des op�rateurs-------------*/
 
-	float operator[](int index)const;
+	float operator[](unsigned int index)const; //fonction size de la stl renvoie un unsigned int
 	FeatureVector operator*(FeatureVector& right)const;
 
 	/*-----------M�thode non demand� utile pour tester et cr�er la class------------------*/
@@ -66,4 +67,8 @@ inline int FeatureVector::getSize()const {
 
 inline float FeatureVector::getNorme()const {
 	return _norme;
+}
+
+inline const std::vector<float>& FeatureVector::getVector() const {
+    return _vector;
 }
