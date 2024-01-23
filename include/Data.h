@@ -41,7 +41,6 @@ public:
     int getNbFeatures()const;
     int getNbSample()const;
     void displayData()const;
-    //const std::vector<float>& aspirelesdonnees() const;
 
     /*------------Définittion des opérateurs-------------*/
     Sample operator[](unsigned int index)const; //unsigned car la fonction size de la stl renvoie un unsigned

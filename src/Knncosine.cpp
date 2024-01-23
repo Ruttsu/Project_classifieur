@@ -14,8 +14,7 @@ KnnCosine::KnnCosine(const Data& trainingData) : Knn(trainingData) {
 float KnnCosine::similarity(const FeatureVector& test, const FeatureVector& data) const {
     if (test.getSize() != data.getSize()) {
         // Les vecteurs doivent avoir la même taille
-        // Vous pouvez lancer une exception ou renvoyer une valeur spéciale ici
-        throw std::invalid_argument("Les vecteurs doivent avoir la même taille.");
+        throw std::invalid_argument("Les vecteurs doivent avoir la même taille."); //TODO a catch
     }
 
     float result = 0;

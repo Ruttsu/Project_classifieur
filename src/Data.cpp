@@ -80,17 +80,3 @@ Sample Data::operator[](unsigned int index) const
     }
 
 }
-
-/*
-const std::vector<float>& Data::aspirelesdonnees() const {
-
-    std::vector<float> featuresArray;
-
-    for (const Sample& sample : _data) {
-        const std::vector<float>& sampleFeatures = sample.getFeatures().getVector();
-        featuresArray.insert(featuresArray.end(), sampleFeatures.begin(), sampleFeatures.end());
-    }
-
-    return featuresArray;
-}
-*/
