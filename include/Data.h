@@ -28,6 +28,7 @@ c'est des données d'appprentissage et 0 si c'est des données a définir.
 
 class Data {
 
+private:
 	vector<Sample> _data;
 	int _nb_features;
 	int _nb_sample;
