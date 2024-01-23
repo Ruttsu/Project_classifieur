@@ -21,6 +21,7 @@ $(EXECUTABLE): $(OBJ_FILES)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -I$(INC_DIR) -c -o $@ $<
 
+# Clean bancal sur certains environnement, A RENDRE CROSS PLATEFORM ET ROBUSTE
 clean:
 	-del $(subst /,\,$(OBJ_DIR)\*.o)
 	-del $(EXECUTABLE).exe

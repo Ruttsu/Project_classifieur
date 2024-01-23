@@ -13,7 +13,7 @@ void Knn::getKnn() const {
     // À implémenter
 }
 
-std::vector<std::pair<double, size_t>> Knn::predictSingle(const FeatureVector& test, int k) const {
+std::vector<std::pair<float, size_t>> Knn::predictSingle(const FeatureVector& test, int k) const {
     // À implémenter 
-    return std::vector<std::pair<double, size_t>>();
+    return std::vector<std::pair<float, size_t>>();
 }

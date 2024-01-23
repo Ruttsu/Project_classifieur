@@ -93,7 +93,7 @@ int main() {
     // fonction predictSingle pour obtenir les k plus proches voisins
     int k = 15; // nombre de voisins
 
-    std::vector<std::pair<double, size_t>> nearestNeighbors = knnClassifier.predictSingle(testFeatures, k); //variable pour stocker les voisins
+    std::vector<std::pair<float, size_t>> nearestNeighbors = knnClassifier.predictSingle(testFeatures, k); //variable pour stocker les voisins
 
     std::cout << "Les " << k << " plus proches voisins d'apprentissage sont :\n" << std::endl;
 

@@ -8,8 +8,8 @@ class KnnCosine : public Knn {
 public:
     KnnCosine(const Data& trainingData);
 
-    virtual std::vector<std::pair<double, size_t>> predictSingle(const FeatureVector& test, int k) const;
-    virtual float similarity(const FeatureVector& test, const FeatureVector& data) const override;
+    virtual std::vector<std::pair<float, size_t>> predictSingle(const FeatureVector& test, int k) const; // I : Feature and int | O : Vector of <double, unsigned int>
+    virtual float similarity(const FeatureVector& test, const FeatureVector& data) const override; // Compare 2 featurevector, return float (value of similarity)
 };
 
 #endif // KNN_COSINE_H
