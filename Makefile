@@ -13,7 +13,7 @@ OBJ_FILES = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))
 # Exécutable final
 EXECUTABLE = myprogram
 
-all: $(EXECUTABLE)
+all: $(OBJ_DIR) $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJ_FILES)
 	$(CXX) $(CXXFLAGS) -o $@ $^
@@ -21,8 +21,10 @@ $(EXECUTABLE): $(OBJ_FILES)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -I$(INC_DIR) -c -o $@ $<
 
+$(OBJ_DIR):
+	mkdir $(subst /,\,$(OBJ_DIR))
+
 # Clean bancal sur certains environnement, A RENDRE CROSS PLATEFORM ET ROBUSTE
 clean:
 	-del $(subst /,\,$(OBJ_DIR)\*.o)
 	-del $(EXECUTABLE).exe
-
