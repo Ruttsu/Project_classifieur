@@ -7,31 +7,15 @@
 #include "KnnManhattan.h"
 #include "Knncosine.h"
 #include "ClassificationReport.h"
+#include "Application.h"
 
 using namespace std;
 
-void afficherMenu()
-{
-    cout << "Commandes disponibles (entrer la numéro de la commande):" << endl;
-    cout << "1. Définir les fichiers d'entrer" << endl;
-    cout << "2. Choisir la valeur de k <valeur>" << endl;
-    cout << "3. Afficher les résultats" << endl;
-    cout << "0. Quitter" << endl;
-}
-
 int main() {
 
+Application app;
+app.run();
 
-    string path;
-    cout << "Donnez le chemin du fichiers d'entrainement :" << endl;
-    cin >> path;
-    Data dataApprentissage(path,1);
-
-    dataApprentissage.displayData();
-
-   /* Data file("D:/Cours/INSA/Cpp/ProjetClassifieur/doc/Digits/Digits/digits.svm", 1);
-    file.displayData();
-    */
 /*
     int commande;
     //donner a mettre dans les bonnes class
@@ -96,4 +80,14 @@ test.displayTabConfusion();
 
     test.displayTabConfusion();*/
 	return 0;
+}
+
+
+void afficherMenu()
+{
+    cout << "Commandes disponibles (entrer la numéro de la commande):" << endl;
+    cout << "1. Définir les fichiers d'entrer" << endl;
+    cout << "2. Choisir la valeur de k <valeur>" << endl;
+    cout << "3. Afficher les résultats" << endl;
+    cout << "0. Quitter" << endl;
 }
