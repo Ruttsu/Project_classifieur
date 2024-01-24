@@ -24,39 +24,10 @@ int main() {
 	KnnCosine knnClassifier(trainingData);
 
 	// fonction predictSingle pour obtenir les k plus proches voisins
-	int k =20; // nombre de voisins
-	vector<pair<float, size_t>> nearestNeighbors = knnClassifier.predictSingle(testFeatures, k); // variable pour stocker les voisins
+	vector<pair<float, size_t>> nearestNeighborsSort = knnClassifier.predictSingle(testFeatures); // variable pour stocker les voisins
 
-	cout << "Les " << k << " plus proches voisins d'apprentissage sont :" << endl;
-
-	float tab[10];
-
-	for (const auto &neighbor : nearestNeighbors) {
-		double similarityValue = neighbor.first; // La première valeur est la similarité
-		int tag = neighbor.second;
-
-		tab[tag] += similarityValue;
-
-		// cout << "Tag du sample : " << tag << endl;
-		// cout << "Similarite : " << similarityValue << endl;
-		// cout << endl;
-	}
-
-	int tag = -1;
-	float total = 0;
-	for (int i=0; i < 10; i++){
-		cout << tab[i] << " ";
-		total += tab[i];
-		if(i == 0) {
-			tag = 0;
-		} else {
-			if(tab[i] > tab[tag]) tag = i;
-		}
-	}
-	
-	float proba = total != 0 ? tab[tag]*100 / total : -1;
-	cout << endl;
-	cout << "La prédiction est un " << tag << ", la probilité est de " << proba << "%" << endl;
+	// ChooseK() retourne le K plus proche voisi et compre() retourne le tag et la proba de la prédiction
+	for(int k=0; k<50 ;k++) knnClassifier.compare(knnClassifier.chooseK(nearestNeighborsSort, k));
 
 	return 0;
 }

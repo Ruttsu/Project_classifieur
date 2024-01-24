@@ -23,7 +23,7 @@ public:
 
 protected:
     virtual void getKnn() const ;    //= 0;
-    virtual std::vector<std::pair<float, size_t>> predictSingle(const FeatureVector& test, int k) const = 0;
+    virtual std::vector<std::pair<float, size_t>> predictSingle(const FeatureVector& test) const = 0;
     virtual float similarity(const FeatureVector& test, const FeatureVector& data) const = 0;
 
     Data _lazy_train; //protected pour etre accessible par KnnAlgo
