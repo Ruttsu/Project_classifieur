@@ -20,28 +20,26 @@ les m�thodes suivantes :
 *----------------------------------------------------------------------------*/
 #include "FeatureVector.h"
 
-class Sample: public FeatureVector {
-
+class Sample {
 	int _tag;
 	FeatureVector _features;
 
 public:
+	/*------------Constructeur---------------*/
 	Sample();
-	Sample(int tag, initializer_list<float> args);
-    /*------------D�finittion des m�thodes---------------*/
+
+    /*------------Definittion des methodes---------------*/
 	void tag(int t);
-	void features(float f);
+	const FeatureVector& getFeatures() const; //getter qui retourne le Feature vector associé, je pense que c'est l'équivalent de la surcharge crochet de sample
     void displaySample()const;
-
     int getTag()const;
-	//int getSize() const;
-
+	void features(float f);
 };
 
-inline int Sample::getTag()const{
+inline int Sample::getTag() const {
     return _tag;
 }
-/*
-inline int Sample::getSize()const {
-	return _features.getSize();
-}*/
+
+inline const FeatureVector& Sample::getFeatures() const {
+    return _features;
+}

@@ -28,6 +28,7 @@ c'est des données d'appprentissage et 0 si c'est des données a définir.
 
 class Data {
 
+private:
 	vector<Sample> _data;
 	int _nb_features;
 	int _nb_sample;
@@ -40,11 +41,10 @@ public:
     /*------------Définittion des méthodes---------------*/
     int getNbFeatures()const;
     int getNbSample()const;
-
     void displayData()const;
 
     /*------------Définittion des opérateurs-------------*/
-    Sample operator[](int index)const;
+    Sample operator[](unsigned int index)const; //unsigned car la fonction size de la stl renvoie un unsigned
 };
 /*---------------------------------------------------------------------------*/
 inline int Data::getNbFeatures()const {

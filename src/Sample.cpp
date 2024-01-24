@@ -1,18 +1,13 @@
-#include "Sample.h"
+#include "../include/Sample.h"
 
-Sample::Sample(): FeatureVector() {}
-
-Sample::Sample(int tag, initializer_list<float> args) : FeatureVector(args), _tag(tag) {
-    for (float a: args) {
-        features(a);
-    }
-}
+Sample::Sample() {} //constru vide
 
 /*------------Définittion des méthodes---------------*/
 void Sample::tag(int t) {
 	_tag = t;
 }
 
+//utile pour lucas dans stockage des datas de learning
 void Sample::features(float f) {
 	_features.addFeatures(f);
 }

@@ -1,4 +1,4 @@
-#include "FeatureVector.h"
+#include "../include/FeatureVector.h"
 
 /*Penser � la construction et le n�cessiter des constructeur par d�faut et d�structeur*/
 
@@ -32,7 +32,7 @@ float FeatureVector::norme()const {
 
 /*------------D�finittion des op�rateurs-------------*/
 
-float FeatureVector::operator[](int index)const {
+float FeatureVector::operator[](unsigned int index)const {
 
     if (index < _vector.size())
     {
