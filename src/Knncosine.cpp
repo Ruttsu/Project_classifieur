@@ -1,8 +1,8 @@
 // KnnCosine.cpp
 #include "../include/Knncosine.h"
 #include <vector>
-#include <utility> // pour std::pair
-#include <algorithm> // pour std::sort
+#include <utility> // pour pair
+#include <algorithm> // pour sort
 
 using namespace std;
 
@@ -14,7 +14,7 @@ KnnCosine::KnnCosine(const Data& trainingData) : Knn(trainingData) {
 float KnnCosine::similarity(const FeatureVector& test, const FeatureVector& data) const {
     if (test.getSize() != data.getSize()) {
         // Les vecteurs doivent avoir la même taille
-        throw std::invalid_argument("Les vecteurs doivent avoir la même taille."); //TODO a catch
+        throw invalid_argument("Les vecteurs doivent avoir la même taille."); //TODO a catch
     }
 
     float result = 0;
@@ -31,29 +31,29 @@ float KnnCosine::similarity(const FeatureVector& test, const FeatureVector& data
     return result;
 }
 
-bool comparePairs(const std::pair<float, size_t>& left, const std::pair<float, size_t>& right) {
+bool comparePairs(const pair<float, size_t>& left, const pair<float, size_t>& right) {
     return left.first > right.first;
 }
 
 //Function who find the nearestNeighbors of a SINGLE sample test
-std::vector<std::pair<float, size_t>> KnnCosine::predictSingle(const FeatureVector& test, int k) const {
-    std::vector<std::pair<float, size_t>> cosineSimilarities; //tab of pair
+vector<pair<float, size_t>> KnnCosine::predictSingle(const FeatureVector& test, int k) const {
+    vector<pair<float, size_t>> cosineSimilarities; //tab of pair
 
     //Call similarity Nbsample (Size of Data test)
     for (int i = 0; i < _lazy_train.getNbSample(); ++i) {
         FeatureVector currentFeatures = _lazy_train[i].getFeatures();
         float similarityValue = similarity(test, currentFeatures);
         int tag = _lazy_train[i].getTag();
-        cosineSimilarities.push_back(std::make_pair(similarityValue, tag));
+        cosineSimilarities.push_back(make_pair(similarityValue, tag));
     }
 
     // Tri des similarités dans l'ordre décroissant en utilisant la fonction de comparaison
-    std::sort(cosineSimilarities.begin(), cosineSimilarities.end(), comparePairs);
+    sort(cosineSimilarities.begin(), cosineSimilarities.end(), comparePairs);
 
     // Sélection des k plus proches voisins (derniers éléments après le tri décroissant)
-    std::vector<std::pair<float, size_t>> nearestNeighborsPairs;
+    vector<pair<float, size_t>> nearestNeighborsPairs;
     for (int i = 0; i < k; ++i) {
-        nearestNeighborsPairs.push_back(std::make_pair(cosineSimilarities[i].first, cosineSimilarities[i].second));
+        nearestNeighborsPairs.push_back(make_pair(cosineSimilarities[i].first, cosineSimilarities[i].second));
     }
 
     return nearestNeighborsPairs;

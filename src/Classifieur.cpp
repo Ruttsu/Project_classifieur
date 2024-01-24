@@ -13,125 +13,50 @@ using namespace std;
 
 int main() {
 
-	//Application app;
-	//app.run();
+	// Charger les données d'apprentissage depuis le fichier
+	Data trainingData("../doc/Digits/digits.svm", true);
+	cout << "Fin de l'import des données d'apprentissage." << endl << endl;
+
+	// FeatureVector de test (premier du fichier digits)
+	FeatureVector testFeatures({0.793836, 0.264603, 0.10347, 0.12025, 0.457457, 0.130727, 0.247971, 0.163846, 0.416592, 0.0105225, 0.197518, 0.120068, 0.649331, 0.0546827, 0.0542517, 0.0481252, 0.137483, 0.111458, 0.15022, 0.131084, 0.182864, 0.129831, 0.0894998, 0.0827041, 0.051342, 0.422515, 0, 0.000284315, 0.029238, 0.0881091, 0, 0.00480701, 0.276144, 0.0405575, 0.254078, 0.490479, 0.53111, 0.171567, 0.413972, 0.268241, 0.200363, 0.161456, 0.370557, 0.123517, 0.224544, 0.0532561, 0.247592, 0.582612, 0.31274, 0.0197861, 0.641833, 0.426604, 0.363537, 0.340048, 0.578312, 0.191365, 0.0989377, 0.0580434, 0.214284, 0.17585, 0.0381746, 0.312853, 0, 0.00109727, 0.119835, 0.395257, 0, 0.00770754, 0.446204, 0.0789867});
+
+	// Créer une instance de la classe KnnCosine avec les données d'apprentissage
+	KnnCosine knnClassifier(trainingData);
+
+	// fonction predictSingle pour obtenir les k plus proches voisins
+	int k =20; // nombre de voisins
+	vector<pair<float, size_t>> nearestNeighbors = knnClassifier.predictSingle(testFeatures, k); // variable pour stocker les voisins
+
+	cout << "Les " << k << " plus proches voisins d'apprentissage sont :" << endl;
+
+	float tab[10];
+
+	for (const auto &neighbor : nearestNeighbors) {
+		double similarityValue = neighbor.first; // La première valeur est la similarité
+		int tag = neighbor.second;
+
+		tab[tag] += similarityValue;
+
+		// cout << "Tag du sample : " << tag << endl;
+		// cout << "Similarite : " << similarityValue << endl;
+		// cout << endl;
+	}
+
+	int tag = -1;
+	float total = 0;
+	for (int i=0; i < 10; i++){
+		cout << tab[i] << " ";
+		total += tab[i];
+		if(i == 0) {
+			tag = 0;
+		} else {
+			if(tab[i] > tab[tag]) tag = i;
+		}
+	}
 	
-/*
-	//TEST de la class classificationReport
-	ClassificationReport test;
+	float proba = total != 0 ? tab[tag]*100 / total : -1;
+	cout << endl;
+	cout << "La prédiction est un " << tag << ", la probilité est de " << proba << "%" << endl;
 
-	test.displayTabConfusion();
-
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-
-    test.displayTabConfusion();*/
-
-    // Charger les données d'apprentissage depuis le fichier
-    Data trainingData("../doc/Digits/digits.svm", true);
-    std::cout << "Fin de l'import des données d'apprentissage" << std::endl;
-
-    // FeatureVector de test (premier du fichier digits)
-    FeatureVector testFeatures;
-    testFeatures.addFeatures(0.793836);
-	testFeatures.addFeatures(0.264603);
-	testFeatures.addFeatures(0.10347);
-	testFeatures.addFeatures(0.12025);
-	testFeatures.addFeatures(0.457457);
-	testFeatures.addFeatures(0.130727);
-	testFeatures.addFeatures(0.247971);
-	testFeatures.addFeatures(0.163846);
-	testFeatures.addFeatures(0.416592);
-	testFeatures.addFeatures(0.0105225);
-	testFeatures.addFeatures(0.197518);
-	testFeatures.addFeatures(0.120068);
-	testFeatures.addFeatures(0.649331);
-	testFeatures.addFeatures(0.0546827);
-	testFeatures.addFeatures(0.0542517);
-	testFeatures.addFeatures(0.0481252);
-	testFeatures.addFeatures(0.137483);
-	testFeatures.addFeatures(0.111458);
-	testFeatures.addFeatures(0.15022);
-	testFeatures.addFeatures(0.131084);
-	testFeatures.addFeatures(0.182864);
-	testFeatures.addFeatures(0.129831);
-	testFeatures.addFeatures(0.0894998);
-	testFeatures.addFeatures(0.0827041);
-	testFeatures.addFeatures(0.051342);
-	testFeatures.addFeatures(0.422515);
-	testFeatures.addFeatures(0);
-	testFeatures.addFeatures(0.000284315);
-	testFeatures.addFeatures(0.029238);
-	testFeatures.addFeatures(0.0881091);
-	testFeatures.addFeatures(0);
-	testFeatures.addFeatures(0.00480701);
-	testFeatures.addFeatures(0.276144);
-	testFeatures.addFeatures(0.0405575);
-	testFeatures.addFeatures(0.254078);
-	testFeatures.addFeatures(0.490479);
-	testFeatures.addFeatures(0.53111);
-	testFeatures.addFeatures(0.171567);
-	testFeatures.addFeatures(0.413972);
-	testFeatures.addFeatures(0.268241);
-	testFeatures.addFeatures(0.200363);
-	testFeatures.addFeatures(0.161456);
-	testFeatures.addFeatures(0.370557);
-	testFeatures.addFeatures(0.123517);
-	testFeatures.addFeatures(0.224544);
-	testFeatures.addFeatures(0.0532561);
-	testFeatures.addFeatures(0.247592);
-	testFeatures.addFeatures(0.582612);
-	testFeatures.addFeatures(0.31274);
-	testFeatures.addFeatures(0.0197861);
-	testFeatures.addFeatures(0.641833);
-	testFeatures.addFeatures(0.426604);
-	testFeatures.addFeatures(0.363537);
-	testFeatures.addFeatures(0.340048);
-	testFeatures.addFeatures(0.578312);
-	testFeatures.addFeatures(0.191365);
-	testFeatures.addFeatures(0.0989377);
-	testFeatures.addFeatures(0.0580434);
-	testFeatures.addFeatures(0.214284);
-	testFeatures.addFeatures(0.17585);
-	testFeatures.addFeatures(0.0381746);
-	testFeatures.addFeatures(0.312853);
-	testFeatures.addFeatures(0);
-	testFeatures.addFeatures(0.00109727);
-	testFeatures.addFeatures(0.119835);
-	testFeatures.addFeatures(0.395257);
-	testFeatures.addFeatures(0);
-	testFeatures.addFeatures(0.00770754);
-	testFeatures.addFeatures(0.446204);
-	testFeatures.addFeatures(0.0789867);
-
-    // Créer une instance de la classe KnnCosine avec les données d'apprentissage
-    KnnCosine knnClassifier(trainingData);
-
-    // fonction predictSingle pour obtenir les k plus proches voisins
-    int k = 15; // nombre de voisins
-
-    std::vector<std::pair<float, size_t>> nearestNeighbors = knnClassifier.predictSingle(testFeatures, k); //variable pour stocker les voisins
-
-    std::cout << "Les " << k << " plus proches voisins d'apprentissage sont :\n" << std::endl;
-
-for (const auto& neighbor : nearestNeighbors) {
-    double similarityValue = neighbor.first;  // La première valeur est la similarité
-	int tag = neighbor.second;
-
-    std::cout << "Tag du sample : " << tag << std::endl;
-    std::cout << "Similarite : " << similarityValue << std::endl;
-    std::cout << std::endl;
-}
-
-    return 0;
+	return 0;
 }
