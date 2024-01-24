@@ -6,10 +6,37 @@
 #include "KnnEuclidien.h"
 #include "KnnManhattan.h"
 #include "Knncosine.h"
+#include "ClassificationReport.h"
+#include "Application.h"
 
 using namespace std;
 
 int main() {
+
+	Application app;
+	app.run();
+	
+/*
+	//TEST de la class classificationReport
+	ClassificationReport test;
+
+	test.displayTabConfusion();
+
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+    test.setTabConfusion(1,1);
+
+    test.displayTabConfusion();*/
+
     // Charger les données d'apprentissage depuis le fichier
     Data trainingData("C:/Users/Jerome/Documents/source/Project_classifieur/doc/Digits/digits.svm", true);
     std::cout << "Fin de l'import des données d'apprentissage" << std::endl;
