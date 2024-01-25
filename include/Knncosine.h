@@ -9,10 +9,7 @@ public:
     KnnCosine(const Data& trainingData);
 
     virtual vector<pair<float, size_t>> predictSingle(const FeatureVector& test) const override; // I : Feature and int | O : Vector of <double, unsigned int>
-    virtual float similarity(const FeatureVector& test, const FeatureVector& data) const override; // Compare 2 featurevector, return float (value of similarity)
-    
-    virtual vector<pair<float, size_t>> chooseK(const vector<pair<float, size_t>>& nearestNeighbors, int k) override; // Grâce au données récuperés pa predictSingle, retourne un tableau trié des k plus proche voisins
-    virtual void compare(vector<pair<float, size_t>> nearestNeighbors) override; // Grâce au tableau des K plus proches voisins retourné par chooseK, retourne le tag ainsi que la proba de cette prediction
+    virtual float similarity(const FeatureVector& test, const FeatureVector& data) const override; // Compare 2 featurevector, return float (value of similarity)    
 };
 
 #endif // KNN_COSINE_H

@@ -22,11 +22,20 @@ int main() {
 	cout << "Fin de l'import des données à prédir." << endl;
 
 	// Créer une instance de la classe KnnCosine avec les données d'apprentissage
-	KnnCosine knnClassifier(trainingData);
+	KnnCosine knnCosine(trainingData);
+	KnnEuclidien knnEuclide(trainingData);
+	KnnManhattan knnManhattan(trainingData);
 
-	// fonction predictSingle pour obtenir les k plus proches voisins
-	//vector<pair<float, size_t>> nearestNeighborsSort = knnClassifier.predict(testingData,15); // variable pour stocker les voisins
-	knnClassifier.predict(testingData,15); // variable pour stocker les voisins
+	int k = 10; //tester avec 10 et 15
+	// fonction predict pour obtenir les k plus proches voisins de tout les valeurs de testingData
+	cout << "Coisne : " << endl;
+	knnCosine.predict(testingData,k); // variable pour stocker les voisins
+
+	cout << "Euclidien : " << endl;
+	knnEuclide.predict(testingData,k);	//Attention j'ai du mettre héritage public et non protected pour que ça marche
+
+	cout << "Manhattan : " << endl;
+	knnManhattan.predict(testingData,k);	//Attention j'ai du mettre héritage public et non protected pour que ça marche
 
 	// ChooseK() retourne le K plus proche voisi et compre() retourne le tag et la proba de la prédiction
 	//for(int k=0; k<50 ;k++) knnClassifier.compare(knnClassifier.chooseK(nearestNeighborsSort, k));

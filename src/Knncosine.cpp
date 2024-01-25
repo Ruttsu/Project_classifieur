@@ -7,9 +7,7 @@
 using namespace std;
 
 // Constructeur avec les datas en argument
-KnnCosine::KnnCosine(const Data& trainingData) : Knn(trainingData) {
-    // Initialisation via constru de Knn
-}
+KnnCosine::KnnCosine(const Data& trainingData) : Knn(trainingData) {} // Initialisation via constru de Knn
 
 float KnnCosine::similarity(const FeatureVector& test, const FeatureVector& data) const {
     if (test.getSize() != data.getSize()) {
@@ -31,7 +29,7 @@ float KnnCosine::similarity(const FeatureVector& test, const FeatureVector& data
     return result;
 }
 
-bool comparePairs(const pair<float, size_t>& left, const pair<float, size_t>& right) {
+bool comparePairsCosine(const pair<float, size_t>& left, const pair<float, size_t>& right) {
     return left.first > right.first;
 }
 
@@ -48,54 +46,7 @@ vector<pair<float, size_t>> KnnCosine::predictSingle(const FeatureVector& test) 
     }
 
     // Tri des similarités dans l'ordre décroissant en utilisant la fonction de comparaison
-    sort(cosineSimilarities.begin(), cosineSimilarities.end(), comparePairs);
-
-    // Sélection des k plus proches voisins (derniers éléments après le tri décroissant)
-    /*vector<pair<float, size_t>> nearestNeighborsPairs;
-    for (int i = 0; i < k; ++i) {
-        nearestNeighborsPairs.push_back(make_pair(cosineSimilarities[i].first, cosineSimilarities[i].second));
-    }*/
+    sort(cosineSimilarities.begin(), cosineSimilarities.end(), comparePairsCosine);
 
     return cosineSimilarities;
-}
-
-vector<pair<float, size_t>> KnnCosine::chooseK(const vector<pair<float, size_t>>& nearestNeighbors, int k) {
-
-    vector<pair<float, size_t>> nearestNeighborsPairs;
-    for (int i = 0; i < k; ++i) {
-        nearestNeighborsPairs.push_back(make_pair(nearestNeighbors[i].first, nearestNeighbors[i].second));
-    }
-    cout << "Pour K = " << k << ", ";
-    return nearestNeighborsPairs;
-}
-
-void KnnCosine::compare(vector<pair<float, size_t>> nearestNeighbors) {
-
-	float figures[10] = {0};
-	for (const auto &neighbor : nearestNeighbors) {
-		double similarityValue = neighbor.first; // La première valeur est la similarité
-		int tag = neighbor.second;
-
-		figures[tag] += similarityValue;
-
-		// cout << "Tag du sample : " << tag << endl;
-		// cout << "Similarite : " << similarityValue << endl;
-		// cout << endl;
-	}
-
-	int tag = -1;
-	float total = 0;
-	for (int i=0; i < 10; i++){
-		//cout << figures[i] << " ";
-		total += figures[i];
-		if(i == 0) {
-			tag = 0;
-		} else {
-			if(figures[i] > figures[tag]) tag = i;
-		}
-	}
-	
-	float proba = total != 0 ? figures[tag]*100 / total : -1;
-	cout << "la prédiction est un " << tag << ", avec une probilité est de " << proba << "%" << endl;
-
 }
