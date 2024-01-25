@@ -2,7 +2,7 @@
 // Created by lucas on 23/01/2024.
 //
 
-#include "Application.h"
+#include "../include/Application.h"
 
 using namespace std;
 

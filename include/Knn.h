@@ -18,8 +18,8 @@ class Knn {
 
 public:
     Knn(Data trainingdata);
-    virtual ~Knn() = default;
-    virtual void predict(const FeatureVector& carac) const;
+    ~Knn() = default;
+    std::vector<std::pair<float, size_t>> predict(const Data& test, int k) const; // I : Data (si possible déja scale)  | O : Tag et pourcentage de précision
 
 protected:
     virtual void getKnn() const ;    //= 0;
