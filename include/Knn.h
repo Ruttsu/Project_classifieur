@@ -19,12 +19,15 @@ class Knn {
 public:
     Knn(Data trainingdata);
     virtual ~Knn() = default;
-    virtual void predict(const FeatureVector& carac) const;
+    vector<pair<int, int>> predict(const Data& test, int k);
 
 protected:
     virtual void getKnn() const ;    //= 0;
-    virtual std::vector<std::pair<float, size_t>> predictSingle(const FeatureVector& test, int k) const = 0;
+    virtual vector<pair<float, size_t>> predictSingle(const FeatureVector& test) const = 0;
     virtual float similarity(const FeatureVector& test, const FeatureVector& data) const = 0;
+
+    vector<pair<float, size_t>> chooseK(const vector<pair<float, size_t>>& nearestNeighbors, int k); // Grâce au données récuperés pa predictSingle, retourne un tableau trié des k plus proche voisins
+    vector<pair<float, size_t>> compare(vector<pair<float, size_t>> nearestNeighbors); // Grâce au tableau des K plus proches voisins retourné par chooseK, retourne le tag ainsi que la proba de cette prediction
 
     Data _lazy_train; //protected pour etre accessible par KnnAlgo
 };
