@@ -21,3 +21,11 @@ void ClassificationReport::setTabConfusion(int index_prediction, int index_reali
     _tab_confusion[index_prediction][index_reality]++;
 
 }
+
+void ClassificationReport::displayReport(vector<pair<int, int>> prediction) {
+    for( const auto& predicted : prediction)
+    {
+        setTabConfusion(predicted.first, predicted.second);
+    }
+    displayTabConfusion();
+}

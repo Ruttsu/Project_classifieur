@@ -9,6 +9,7 @@
 #include "../include/ClassificationReport.h"
 #include "../include/Application.h"
 
+
 using namespace std;
 
 int main() {
@@ -26,7 +27,7 @@ int main() {
 	KnnEuclidien knnEuclide(trainingData);
 	KnnManhattan knnManhattan(trainingData);
 
-	ClassificationReport reportCosine;
+    ClassificationReport reportCosine;
 	ClassificationReport reporEuclide;
 	ClassificationReport reportManhattan;
 
@@ -34,8 +35,9 @@ int main() {
 	// fonction predict pour obtenir les k plus proches voisins de tout les valeurs de testingData
 	cout << endl << "Cosine : " << endl;
 	vector<pair<int, int>> predictedCosine = knnCosine.predict(testingData,k); // variable pour stocker les voisins
-	for( const auto& predicted : predictedCosine) reportCosine.setTabConfusion(predicted.first, predicted.second);
-	reportCosine.displayTabConfusion();
+//	for( const auto& predicted : predictedCosine) reportCosine.setTabConfusion(predicted.first, predicted.second);
+//	reportCosine.displayTabConfusion();
+    reportCosine.displayReport(predictedCosine);
 
 	cout << endl << "Euclidien : " << endl;
 	vector<pair<int, int>> predictedEuclide = knnEuclide.predict(testingData,k);	//Attention j'ai du mettre héritage public et non protected pour que ça marche
