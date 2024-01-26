@@ -26,16 +26,26 @@ int main() {
 	KnnEuclidien knnEuclide(trainingData);
 	KnnManhattan knnManhattan(trainingData);
 
+	ClassificationReport reportCosine;
+	ClassificationReport reporEuclide;
+	ClassificationReport reportManhattan;
+
 	int k = 10; //tester avec 10 et 15
 	// fonction predict pour obtenir les k plus proches voisins de tout les valeurs de testingData
-	cout << "Coisne : " << endl;
-	knnCosine.predict(testingData,k); // variable pour stocker les voisins
+	cout << endl << "Cosine : " << endl;
+	vector<pair<int, int>> predictedCosine = knnCosine.predict(testingData,k); // variable pour stocker les voisins
+	for( const auto& predicted : predictedCosine) reportCosine.setTabConfusion(predicted.first, predicted.second);
+	reportCosine.displayTabConfusion();
 
-	cout << "Euclidien : " << endl;
-	knnEuclide.predict(testingData,k);	//Attention j'ai du mettre héritage public et non protected pour que ça marche
+	cout << endl << "Euclidien : " << endl;
+	vector<pair<int, int>> predictedEuclide = knnEuclide.predict(testingData,k);	//Attention j'ai du mettre héritage public et non protected pour que ça marche
+	for( const auto& predicted : predictedEuclide) reporEuclide.setTabConfusion(predicted.first, predicted.second);
+	reporEuclide.displayTabConfusion();
 
-	cout << "Manhattan : " << endl;
-	knnManhattan.predict(testingData,k);	//Attention j'ai du mettre héritage public et non protected pour que ça marche
+	cout << endl << "Manhattan : " << endl;
+	vector<pair<int, int>> predictedManhattan = knnManhattan.predict(testingData,k);	//Attention j'ai du mettre héritage public et non protected pour que ça marche
+	for( const auto& predicted : predictedManhattan) reportManhattan.setTabConfusion(predicted.first, predicted.second);
+	reportManhattan.displayTabConfusion();
 
 	// ChooseK() retourne le K plus proche voisi et compre() retourne le tag et la proba de la prédiction
 	//for(int k=0; k<50 ;k++) knnClassifier.compare(knnClassifier.chooseK(nearestNeighborsSort, k));

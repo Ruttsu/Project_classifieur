@@ -19,8 +19,7 @@ class Knn {
 public:
     Knn(Data trainingdata);
     virtual ~Knn() = default;
-    //vector<pair<float, size_t>> Knn::predict(const Data& test, int k);
-    void predict(const Data& test, int k);
+    vector<pair<int, int>> predict(const Data& test, int k);
 
 protected:
     virtual void getKnn() const ;    //= 0;

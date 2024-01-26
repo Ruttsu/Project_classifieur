@@ -6,75 +6,23 @@
 Knn::Knn(Data trainingdata) : _lazy_train(trainingdata) {} //constru avec les datas d'entrainement en param
 
 
-//vector<pair<float, size_t>> Knn::predict(const Data& test, int k) {
-void Knn::predict(const Data& test, int k) {
-    vector<pair<float, size_t>> predictions; // Vecteur de paires de prédiction avec pourcentage et tag prédit
+vector<pair<int, int>> Knn::predict(const Data& test, int k) {
 
     int error = 0;
+    vector<pair<int, int>> result;
+    vector<pair<float, size_t>> predictions; // Vecteur de paires de prédiction avec pourcentage et tag prédit
+
     for (int i = 0; i < test.getNbSample(); ++i) {
         FeatureVector featureTest = test[i].getFeatures();
         vector<pair<float, size_t>> cosineSimilarities = predictSingle(featureTest);
-        cout << "Le tag réél est " << test[i].getTag() << " : ";
+        // cout << "Le tag réél est " << test[i].getTag() << " : ";
         predictions = compare(chooseK(cosineSimilarities, k));
+        result.push_back(make_pair(predictions[0].second, test[i].getTag()));
 
-        if(test[i].getTag() != predictions[0].first) error++;
+        if(test[i].getTag() != predictions[0].second) error++;
     }
-    cout << "Nombre d'erreur : " << error << endl << endl;
-    
-/*
-        // Collecte des tags des voisins
-        vector<size_t> neighborTags;
-        for (const auto& neighbor : cosineSimilarities) {
-            neighborTags.push_back(neighbor.second);
-        }
-
-        // Trouver le tag majoritaire
-        sort(neighborTags.begin(), neighborTags.end()); // Trie par ordre croissant des tags des nearest neighbors
-        size_t mostFrequentTag = neighborTags[0]; // Initialisation avec le premier tag
-        size_t currentTag = mostFrequentTag;
-        int currentCount = 1;
-        int maxCount = 1;
-
-        for (size_t i = 1; i < neighborTags.size(); ++i) {
-            if (neighborTags[i] == currentTag) {
-                currentCount++;
-            } else {
-                if (currentCount > maxCount) {
-                    maxCount = currentCount;
-                    mostFrequentTag = currentTag;
-                }
-                currentTag = neighborTags[i];
-                currentCount = 1;
-            }
-        }
-
-        // Vérifier le dernier groupe de tags
-        if (currentCount > maxCount) {
-            mostFrequentTag = currentTag;
-        }
-
-        // Calcul du tag prédit et du pourcentage de certitude
-        float totalWeightedSimilarity = 0.0;
-        float totalWeight = 0.0;
-        size_t predictedTag = mostFrequentTag;
-
-        for (const auto& neighbor : cosineSimilarities) { // Parcours des k voisins
-            if (neighbor.second == mostFrequentTag) {
-                float weightedSimilarity = neighbor.first; // Utilisation du tag comme coefficient
-                totalWeightedSimilarity += weightedSimilarity;
-            }
-            totalWeight += neighbor.first; // Utilisation de la similarity comme coefficient
-        }
-
-        // Calcul du pourcentage en fonction du total pondéré des similarités
-        float certaintyPercentage = (totalWeightedSimilarity / totalWeight) * 100.0;
-
-        // Stockage des résultats dans le vecteur de prédictions
-        predictions.push_back(make_pair(certaintyPercentage, predictedTag));
-    }
-
-    return predictions;
-*/
+    // cout << "Nombre d'erreur : " << error << endl << endl;
+    return result;
 }
 
 void Knn::getKnn() const {
@@ -93,7 +41,7 @@ vector<pair<float, size_t>> Knn::chooseK(const vector<pair<float, size_t>>& near
     for (int i = 0; i < k; ++i) {
         nearestNeighborsPairs.push_back(make_pair(nearestNeighbors[i].first, nearestNeighbors[i].second));
     }
-    cout << "Pour K = " << k << ", ";
+    // cout << "Pour K = " << k << ", ";
     return nearestNeighborsPairs;
 }
 
@@ -124,10 +72,10 @@ vector<pair<float, size_t>> Knn::compare(vector<pair<float, size_t>> nearestNeig
 	}
 	
 	float proba = total != 0 ? figures[tag]*100 / total : -1;
-	cout << "la prédiction est un " << tag << ", avec une probilité est de " << proba << "%" << endl;
+	// cout << "la prédiction est un " << tag << ", avec une probilité est de " << proba << "%" << endl;
 
     vector<pair<float, size_t>> result;
-    result.push_back(make_pair(tag, proba));
+    result.push_back(make_pair(proba, tag));
     return result;
 
 }
