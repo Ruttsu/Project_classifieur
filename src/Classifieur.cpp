@@ -1,137 +1,56 @@
 ﻿// Classifieur.cpp : définit le point d'entrée de l'application.
 
-#include "Classifieur.h"
-#include "Data.h"
-#include "FeatureVector.h"
-#include "KnnEuclidien.h"
-#include "KnnManhattan.h"
-#include "Knncosine.h"
-#include "ClassificationReport.h"
-#include "Application.h"
+#include "../include/Classifieur.h"
+#include "../include/Data.h"
+#include "../include/FeatureVector.h"
+#include "../include/KnnEuclidien.h"
+#include "../include/KnnManhattan.h"
+#include "../include/Knncosine.h"
+#include "../include/ClassificationReport.h"
+#include "../include/Application.h"
+
 
 using namespace std;
 
 int main() {
 
-	Application app;
-	app.run();
-	
-/*
-	//TEST de la class classificationReport
-	ClassificationReport test;
+	// Charger les données d'apprentissage depuis le fichier (900 premiers)
+	Data trainingData("../doc/Digits/trainingData.svm", true);
+	cout << "Fin de l'import des données d'apprentissage." << endl;
 
-	test.displayTabConfusion();
+	// Charger les données à prédir depuis le fichier (100 derniers)
+	Data testingData("../doc/Digits/TestingData.svm", true);
+	cout << "Fin de l'import des données à prédir." << endl;
 
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
+	// Créer une instance de la classe KnnCosine avec les données d'apprentissage
+	KnnCosine knnCosine(trainingData);
+	KnnEuclidien knnEuclide(trainingData);
+	KnnManhattan knnManhattan(trainingData);
 
-    test.displayTabConfusion();*/
+    ClassificationReport reportCosine;
+	ClassificationReport reporEuclide;
+	ClassificationReport reportManhattan;
 
-    // Charger les données d'apprentissage depuis le fichier
-    Data trainingData("C:/Users/Jerome/Documents/source/Project_classifieur/doc/Digits/digits.svm", true);
-    std::cout << "Fin de l'import des données d'apprentissage" << std::endl;
+	int k = 10; //tester avec 10 et 15
+	// fonction predict pour obtenir les k plus proches voisins de tout les valeurs de testingData
+	cout << endl << "Cosine : " << endl;
+	vector<pair<int, int>> predictedCosine = knnCosine.predict(testingData,k); // variable pour stocker les voisins
+//	for( const auto& predicted : predictedCosine) reportCosine.setTabConfusion(predicted.first, predicted.second);
+//	reportCosine.displayTabConfusion();
+    reportCosine.displayReport(predictedCosine);
 
-    // FeatureVector de test (premier du fichier digits)
-    FeatureVector testFeatures;
-    testFeatures.addFeatures(0.793836);
-	testFeatures.addFeatures(0.264603);
-	testFeatures.addFeatures(0.10347);
-	testFeatures.addFeatures(0.12025);
-	testFeatures.addFeatures(0.457457);
-	testFeatures.addFeatures(0.130727);
-	testFeatures.addFeatures(0.247971);
-	testFeatures.addFeatures(0.163846);
-	testFeatures.addFeatures(0.416592);
-	testFeatures.addFeatures(0.0105225);
-	testFeatures.addFeatures(0.197518);
-	testFeatures.addFeatures(0.120068);
-	testFeatures.addFeatures(0.649331);
-	testFeatures.addFeatures(0.0546827);
-	testFeatures.addFeatures(0.0542517);
-	testFeatures.addFeatures(0.0481252);
-	testFeatures.addFeatures(0.137483);
-	testFeatures.addFeatures(0.111458);
-	testFeatures.addFeatures(0.15022);
-	testFeatures.addFeatures(0.131084);
-	testFeatures.addFeatures(0.182864);
-	testFeatures.addFeatures(0.129831);
-	testFeatures.addFeatures(0.0894998);
-	testFeatures.addFeatures(0.0827041);
-	testFeatures.addFeatures(0.051342);
-	testFeatures.addFeatures(0.422515);
-	testFeatures.addFeatures(0);
-	testFeatures.addFeatures(0.000284315);
-	testFeatures.addFeatures(0.029238);
-	testFeatures.addFeatures(0.0881091);
-	testFeatures.addFeatures(0);
-	testFeatures.addFeatures(0.00480701);
-	testFeatures.addFeatures(0.276144);
-	testFeatures.addFeatures(0.0405575);
-	testFeatures.addFeatures(0.254078);
-	testFeatures.addFeatures(0.490479);
-	testFeatures.addFeatures(0.53111);
-	testFeatures.addFeatures(0.171567);
-	testFeatures.addFeatures(0.413972);
-	testFeatures.addFeatures(0.268241);
-	testFeatures.addFeatures(0.200363);
-	testFeatures.addFeatures(0.161456);
-	testFeatures.addFeatures(0.370557);
-	testFeatures.addFeatures(0.123517);
-	testFeatures.addFeatures(0.224544);
-	testFeatures.addFeatures(0.0532561);
-	testFeatures.addFeatures(0.247592);
-	testFeatures.addFeatures(0.582612);
-	testFeatures.addFeatures(0.31274);
-	testFeatures.addFeatures(0.0197861);
-	testFeatures.addFeatures(0.641833);
-	testFeatures.addFeatures(0.426604);
-	testFeatures.addFeatures(0.363537);
-	testFeatures.addFeatures(0.340048);
-	testFeatures.addFeatures(0.578312);
-	testFeatures.addFeatures(0.191365);
-	testFeatures.addFeatures(0.0989377);
-	testFeatures.addFeatures(0.0580434);
-	testFeatures.addFeatures(0.214284);
-	testFeatures.addFeatures(0.17585);
-	testFeatures.addFeatures(0.0381746);
-	testFeatures.addFeatures(0.312853);
-	testFeatures.addFeatures(0);
-	testFeatures.addFeatures(0.00109727);
-	testFeatures.addFeatures(0.119835);
-	testFeatures.addFeatures(0.395257);
-	testFeatures.addFeatures(0);
-	testFeatures.addFeatures(0.00770754);
-	testFeatures.addFeatures(0.446204);
-	testFeatures.addFeatures(0.0789867);
+	cout << endl << "Euclidien : " << endl;
+	vector<pair<int, int>> predictedEuclide = knnEuclide.predict(testingData,k);	//Attention j'ai du mettre héritage public et non protected pour que ça marche
+	for( const auto& predicted : predictedEuclide) reporEuclide.setTabConfusion(predicted.first, predicted.second);
+	reporEuclide.displayTabConfusion();
 
-    // Créer une instance de la classe KnnCosine avec les données d'apprentissage
-    KnnCosine knnClassifier(trainingData);
+	cout << endl << "Manhattan : " << endl;
+	vector<pair<int, int>> predictedManhattan = knnManhattan.predict(testingData,k);	//Attention j'ai du mettre héritage public et non protected pour que ça marche
+	for( const auto& predicted : predictedManhattan) reportManhattan.setTabConfusion(predicted.first, predicted.second);
+	reportManhattan.displayTabConfusion();
 
-    // fonction predictSingle pour obtenir les k plus proches voisins
-    int k = 15; // nombre de voisins
+	// ChooseK() retourne le K plus proche voisi et compre() retourne le tag et la proba de la prédiction
+	//for(int k=0; k<50 ;k++) knnClassifier.compare(knnClassifier.chooseK(nearestNeighborsSort, k));
 
-    std::vector<std::pair<float, size_t>> nearestNeighbors = knnClassifier.predictSingle(testFeatures, k); //variable pour stocker les voisins
-
-    std::cout << "Les " << k << " plus proches voisins d'apprentissage sont :\n" << std::endl;
-
-for (const auto& neighbor : nearestNeighbors) {
-    double similarityValue = neighbor.first;  // La première valeur est la similarité
-	int tag = neighbor.second;
-
-    std::cout << "Tag du sample : " << tag << std::endl;
-    std::cout << "Similarite : " << similarityValue << std::endl;
-    std::cout << std::endl;
-}
-
-    return 0;
+	return 0;
 }

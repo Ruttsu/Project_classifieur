@@ -41,6 +41,8 @@ public:
 
 //public:
 
+	FeatureVector();
+	FeatureVector(initializer_list<float> args);
 	/*------------D�finittion des m�thodes---------------*/
 
 	float norme()const;
