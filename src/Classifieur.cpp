@@ -37,17 +37,17 @@ int main() {
 	vector<pair<int, int>> predictedCosine = knnCosine.predict(testingData,k); // variable pour stocker les voisins
 //	for( const auto& predicted : predictedCosine) reportCosine.setTabConfusion(predicted.first, predicted.second);
 //	reportCosine.displayTabConfusion();
-    reportCosine.displayReport(predictedCosine);
+knnCosine.displayResult(predictedCosine);
 
 	cout << endl << "Euclidien : " << endl;
 	vector<pair<int, int>> predictedEuclide = knnEuclide.predict(testingData,k);	//Attention j'ai du mettre héritage public et non protected pour que ça marche
-	for( const auto& predicted : predictedEuclide) reporEuclide.setTabConfusion(predicted.first, predicted.second);
-	reporEuclide.displayTabConfusion();
+//	for( const auto& predicted : predictedEuclide) reporEuclide.setTabConfusion(predicted.first, predicted.second);
+//	reporEuclide.displayTabConfusion();
 
 	cout << endl << "Manhattan : " << endl;
 	vector<pair<int, int>> predictedManhattan = knnManhattan.predict(testingData,k);	//Attention j'ai du mettre héritage public et non protected pour que ça marche
-	for( const auto& predicted : predictedManhattan) reportManhattan.setTabConfusion(predicted.first, predicted.second);
-	reportManhattan.displayTabConfusion();
+//	for( const auto& predicted : predictedManhattan) reportManhattan.setTabConfusion(predicted.first, predicted.second);
+//	reportManhattan.displayTabConfusion();
 
 	// ChooseK() retourne le K plus proche voisi et compre() retourne le tag et la proba de la prédiction
 	//for(int k=0; k<50 ;k++) knnClassifier.compare(knnClassifier.chooseK(nearestNeighborsSort, k));

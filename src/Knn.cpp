@@ -29,6 +29,16 @@ void Knn::getKnn() const {
     // À implémenter
 }
 
+void Knn::displayResult(vector<pair<int, int>> prediction) {
+    int i=1;
+    for(const auto& predicted : prediction)
+    {
+        cout<<"Sample " << i << " est un ";
+        cout<<predicted.first<<endl;
+        i++;
+    }
+}
+
 
 vector<pair<float, size_t>> Knn::predictSingle(const FeatureVector& test) const {
     // À implémenter 

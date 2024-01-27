@@ -16,16 +16,17 @@ void ClassificationReport::displayTabConfusion() const {
     }
 }
 
-void ClassificationReport::setTabConfusion(int index_prediction, int index_reality) {
+void ClassificationReport::setTabConfusion(vector<pair<int, int>> prediction) {
 
-    _tab_confusion[index_prediction][index_reality]++;
+    for( const auto& predicted : prediction)
+    {
+        _tab_confusion[predicted.first][predicted.second]++;
+    }
+
 
 }
 
-void ClassificationReport::displayReport(vector<pair<int, int>> prediction) {
-    for( const auto& predicted : prediction)
-    {
-        setTabConfusion(predicted.first, predicted.second);
-    }
+void ClassificationReport::displayReport() {
+
     displayTabConfusion();
 }

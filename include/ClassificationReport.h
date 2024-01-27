@@ -23,14 +23,18 @@ class ClassificationReport{
 
 private:
     int _tab_confusion[10][10]={};
+    int _nbTags;
+
+    int _ok;
+    int _nok;
 
 public:
 
     /*------------Définittion des méthodes---------------*/
     void displayTabConfusion()const;
-    void setTabConfusion(int index_prediction, int index_reality);
+    void setTabConfusion(vector<pair<int, int>> prediction);
     int getTabConfusion(int index_prediction, int index_reality);
-    void displayReport(vector<pair<int, int>> prediction);
+    void displayReport();
     
 };
 

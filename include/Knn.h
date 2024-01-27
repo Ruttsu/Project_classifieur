@@ -21,6 +21,9 @@ public:
     virtual ~Knn() = default;
     vector<pair<int, int>> predict(const Data& test, int k);
 
+    //lucas
+    void displayResult(vector<pair<int, int>> prediction);
+
 protected:
     virtual void getKnn() const ;    //= 0;
     virtual vector<pair<float, size_t>> predictSingle(const FeatureVector& test) const = 0;
