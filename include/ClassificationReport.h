@@ -16,6 +16,7 @@ matrice de confusion.
 #include <iostream>
 #include <iomanip>
 #include <vector>
+#include "Knn.h"
 
 using namespace std;
 
@@ -32,9 +33,9 @@ public:
 
     /*------------Définittion des méthodes---------------*/
     void displayTabConfusion()const;
-    void setTabConfusion(vector<pair<int, int>> prediction);
+    void setTabConfusion(Knn& knn);
     int getTabConfusion(int index_prediction, int index_reality);
-    void displayReport();
+    void displayReport()const;
     
 };
 

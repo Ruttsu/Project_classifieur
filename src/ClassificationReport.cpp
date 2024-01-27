@@ -16,17 +16,38 @@ void ClassificationReport::displayTabConfusion() const {
     }
 }
 
-void ClassificationReport::setTabConfusion(vector<pair<int, int>> prediction) {
+void ClassificationReport::setTabConfusion(Knn& knn) {
 
-    for( const auto& predicted : prediction)
+    _ok=0;
+    _nok=0;
+
+    for( const auto& predicted : knn.getPrediction())
     {
         _tab_confusion[predicted.first][predicted.second]++;
+
+        if(predicted.first==predicted.second)
+        {
+            _ok++;
+        }else
+        {
+            _nok++;
+        }
     }
-
-
 }
 
-void ClassificationReport::displayReport() {
+void ClassificationReport::displayReport() const {
 
     displayTabConfusion();
+
+    cout<<endl;
+    cout<<"Voici le nombre de bonne prediction : "<<_ok<<endl;
+    cout<<"Voici le nombre de mauvaise prediction : "<<_nok<<endl;
+
+    float pourcentage;
+    pourcentage = static_cast<float>((_ok) / (_nok + _ok)*100);
+
+
+    cout<<"Voici le pourcentage de bonne prediction : " << pourcentage<<"%"<<endl;
+
+
 }

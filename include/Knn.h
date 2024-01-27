@@ -19,10 +19,11 @@ class Knn {
 public:
     Knn(Data trainingdata);
     virtual ~Knn() = default;
-    vector<pair<int, int>> predict(const Data& test, int k);
+    void predict(const Data& test, int k);
 
     //lucas
-    void displayResult(vector<pair<int, int>> prediction);
+    void displayResult()const;
+    vector<pair<int, int>> getPrediction() const;
 
 protected:
     virtual void getKnn() const ;    //= 0;
@@ -33,6 +34,9 @@ protected:
     vector<pair<float, size_t>> compare(vector<pair<float, size_t>> nearestNeighbors); // Grâce au tableau des K plus proches voisins retourné par chooseK, retourne le tag ainsi que la proba de cette prediction
 
     Data _lazy_train; //protected pour etre accessible par KnnAlgo
+
+    //lucas
+    vector<pair<int, int>> _prediction;
 };
 
 #endif
