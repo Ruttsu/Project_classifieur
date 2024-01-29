@@ -58,10 +58,11 @@ void ClassificationReport::generationExcel(Knn& train, const Data& test,const in
     ofstream csvFile("resultCSV");
 
     if (!csvFile.is_open()) {
-        // Gérer l'erreur, par exemple, en affichant un message et en retournant
-        cerr << "Erreur lors de l'ouverture du fichier CSV." << std::endl;
+        cerr << "Erreur lors de l'ouverture du fichier CSV." << endl;
         return;
     }
+
+    csvFile << "K,Good Prediction\n";
 
     vector<float> result;
 
@@ -70,5 +71,25 @@ void ClassificationReport::generationExcel(Knn& train, const Data& test,const in
         train.predict(test, k);
         setTabConfusion(train);
         result.push_back(_goodPrediction);
+
+
+        // Écrire les résultats dans le fichier CSV
+        csvFile << k << "," << result.back() << "\n";
     }
+
+    csvFile.close();
+}
+
+void ClassificationReport::resetVariable() {
+
+    for (int i = 0; i < 10; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            _tab_confusion[i][j] = 0;
+        }
+    }
+
+    _nbTags = 0;
+    _ok = 0;
+    _nok = 0;
+    _goodPrediction = 0.0;
 }

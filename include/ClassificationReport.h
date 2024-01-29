@@ -41,6 +41,7 @@ public:
     void displayReport()const;
 
     void generationExcel(Knn& train, const Data& test,const int maxk);
+    void resetVariable();
     
 };
 

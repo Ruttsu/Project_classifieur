@@ -100,6 +100,7 @@ void Application::run(){
 
     if(donneeTest)
     {
+
         ClassificationReport reportCosine;
         ClassificationReport reporEuclide;
         ClassificationReport reportManhattan;
@@ -119,12 +120,14 @@ void Application::run(){
 
             case 1:
                 cout << "Voici le raport pour knnCosine :" << endl;
+                reportCosine.resetVariable();
                 reportCosine.setTabConfusion(knnCosine);
                 reportCosine.displayReport();
                 break;
 
             case 2:
                 cout << "Voici le raport pour knnEuclide :" << endl;
+                reporEuclide.resetVariable();
                 reporEuclide.setTabConfusion(knnEuclide);
                 reporEuclide.displayReport();
                 break;
@@ -132,6 +135,7 @@ void Application::run(){
             case 3:
 
                 cout << "Voici le raport pour knnManhattan :" << endl;
+                reportManhattan.resetVariable();
                 reportManhattan.setTabConfusion(knnManhattan);
                 reportManhattan.displayReport();
                 break;
