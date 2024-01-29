@@ -25,11 +25,6 @@ vector<pair<int, int>> Knn::predict(const Data& test, int k) {
     return result;
 }
 
-void Knn::getKnn() const {
-    // À implémenter
-}
-
-
 vector<pair<float, size_t>> Knn::predictSingle(const FeatureVector& test) const {
     // À implémenter 
     return vector<pair<float, size_t>>();

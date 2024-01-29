@@ -20,7 +20,6 @@ public:
     Knn(Data trainingdata);
     virtual ~Knn() = default;
     vector<pair<int, int>> predict(const Data& test, int k);
-    ~Knn() = default;
     std::vector<std::pair<float, size_t>> predict(const Data& test, int k) const;
     //size_t selectMajorityTag(const std::vector<size_t>& neighborTags) const;
     //float calculatePrecision(const std::vector<std::pair<float, size_t>>& cosineSimilarities, size_t majorityTag) const;

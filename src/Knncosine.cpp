@@ -8,6 +8,7 @@ using namespace std;
 
 // Constructeur avec les datas en argument
 KnnCosine::KnnCosine(const Data& trainingData) : Knn(trainingData) {} // Initialisation via constru de Knn
+KnnCosine::~KnnCosine() {}
 
 float KnnCosine::similarity(const FeatureVector& test, const FeatureVector& data) const {
     if (test.getSize() != data.getSize()) {
