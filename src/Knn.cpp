@@ -6,10 +6,9 @@
 Knn::Knn(Data trainingdata) : _lazy_train(trainingdata) {} //constru avec les datas d'entrainement en param
 
 
-vector<pair<int, int>> Knn::predict(const Data& test, int k) {
+void Knn::predict(const Data& test, int k) {
 
     int error = 0;
-    vector<pair<int, int>> result;
     vector<pair<float, size_t>> predictions; // Vecteur de paires de prédiction avec pourcentage et tag prédit
 
     for (int i = 0; i < test.getNbSample(); ++i) {
@@ -17,16 +16,30 @@ vector<pair<int, int>> Knn::predict(const Data& test, int k) {
         vector<pair<float, size_t>> cosineSimilarities = predictSingle(featureTest);
         // cout << "Le tag réél est " << test[i].getTag() << " : ";
         predictions = compare(chooseK(cosineSimilarities, k));
-        result.push_back(make_pair(predictions[0].second, test[i].getTag()));
+        _prediction.push_back(make_pair(predictions[0].second, test[i].getTag()));
 
         if(test[i].getTag() != predictions[0].second) error++;
     }
     // cout << "Nombre d'erreur : " << error << endl << endl;
-    return result;
 }
 
 void Knn::getKnn() const {
     // À implémenter
+}
+
+vector<pair<int, int>> Knn::getPrediction() const
+{
+    return _prediction;
+}
+
+void Knn::displayResult() const {
+    int i=1;
+    for(const auto& predicted : _prediction)
+    {
+        cout<<"Sample " << i << " est un ";
+        cout<<predicted.first<<endl;
+        i++;
+    }
 }
 
 
