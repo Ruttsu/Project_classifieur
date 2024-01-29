@@ -35,6 +35,9 @@ void ClassificationReport::setTabConfusion(Knn& knn) {
             _nok++;
         }
     }
+
+    _goodPrediction = static_cast<float>(static_cast<float>(_ok) / static_cast<float>(_nok + _ok)*100);
+
 }
 
 void ClassificationReport::displayReport() const {
@@ -45,11 +48,27 @@ void ClassificationReport::displayReport() const {
     cout<<"Voici le nombre de bonne prediction : "<<_ok<<endl;
     cout<<"Voici le nombre de mauvaise prediction : "<<_nok<<endl;
 
-    float pourcentage;
-    pourcentage = static_cast<float>(static_cast<float>(_ok) / static_cast<float>(_nok + _ok)*100);
+    cout<<"Voici le pourcentage de bonne prediction : " << _goodPrediction<<"%"<<endl;
 
 
-    cout<<"Voici le pourcentage de bonne prediction : " << pourcentage<<"%"<<endl;
+}
 
+void ClassificationReport::generationExcel(Knn& train, const Data& test,const int maxk) {
 
+    ofstream csvFile("resultCSV");
+
+    if (!csvFile.is_open()) {
+        // Gérer l'erreur, par exemple, en affichant un message et en retournant
+        cerr << "Erreur lors de l'ouverture du fichier CSV." << std::endl;
+        return;
+    }
+
+    vector<float> result;
+
+    for(int k=0; k<maxk; k++)
+    {
+        train.predict(test, k);
+        setTabConfusion(train);
+        result.push_back(_goodPrediction);
+    }
 }

@@ -16,6 +16,7 @@ matrice de confusion.
 #include <iostream>
 #include <iomanip>
 #include <vector>
+#include <fstream>
 #include "Knn.h"
 
 using namespace std;
@@ -29,6 +30,8 @@ private:
     int _ok;
     int _nok;
 
+    float _goodPrediction;
+
 public:
 
     /*------------Définittion des méthodes---------------*/
@@ -36,6 +39,8 @@ public:
     void setTabConfusion(Knn& knn);
     int getTabConfusion(int index_prediction, int index_reality);
     void displayReport()const;
+
+    void generationExcel(Knn& train, const Data& test,const int maxk);
     
 };
 
