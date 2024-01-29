@@ -1,0 +1,200 @@
+Tag prédit : 2
+Pourcentage de certitude : 42.0693%
+Tag prédit : 3
+Pourcentage de certitude : 100%
+Tag prédit : 7
+Pourcentage de certitude : 100%
+Tag prédit : 1
+Pourcentage de certitude : 100%
+Tag prédit : 0
+Pourcentage de certitude : 100%
+Tag prédit : 3
+Pourcentage de certitude : 100%
+Tag prédit : 6
+Pourcentage de certitude : 100%
+Tag prédit : 0
+Pourcentage de certitude : 100%
+Tag prédit : 3
+Pourcentage de certitude : 61.1685%
+Tag prédit : 6
+Pourcentage de certitude : 61.0496%
+Tag prédit : 0
+Pourcentage de certitude : 100%
+Tag prédit : 6
+Pourcentage de certitude : 100%
+Tag prédit : 6
+Pourcentage de certitude : 58.4639%
+Tag prédit : 7
+Pourcentage de certitude : 100%
+Tag prédit : 7
+Pourcentage de certitude : 61.2059%
+Tag prédit : 0
+Pourcentage de certitude : 100%
+Tag prédit : 9
+Pourcentage de certitude : 100%
+Tag prédit : 4
+Pourcentage de certitude : 61.1577%
+Tag prédit : 7
+Pourcentage de certitude : 100%
+Tag prédit : 1
+Pourcentage de certitude : 39.2902%
+Tag prédit : 3
+Pourcentage de certitude : 100%
+Tag prédit : 8
+Pourcentage de certitude : 80.8758%
+Tag prédit : 4
+Pourcentage de certitude : 80.9487%
+Tag prédit : 3
+Pourcentage de certitude : 100%
+Tag prédit : 3
+Pourcentage de certitude : 100%
+Tag prédit : 3
+Pourcentage de certitude : 80.4584%
+Tag prédit : 9
+Pourcentage de certitude : 100%
+Tag prédit : 1
+Pourcentage de certitude : 76.7753%
+Tag prédit : 8
+Pourcentage de certitude : 100%
+Tag prédit : 0
+Pourcentage de certitude : 100%
+Tag prédit : 3
+Pourcentage de certitude : 80.3256%
+Tag prédit : 0
+Pourcentage de certitude : 100%
+Tag prédit : 8
+Pourcentage de certitude : 100%
+Tag prédit : 0
+Pourcentage de certitude : 100%
+Tag prédit : 7
+Pourcentage de certitude : 100%
+Tag prédit : 6
+Pourcentage de certitude : 100%
+Tag prédit : 7
+Pourcentage de certitude : 100%
+Tag prédit : 0
+Pourcentage de certitude : 100%
+Tag prédit : 3
+Pourcentage de certitude : 100%
+Tag prédit : 8
+Pourcentage de certitude : 100%
+Tag prédit : 5
+Pourcentage de certitude : 100%
+Tag prédit : 7
+Pourcentage de certitude : 100%
+Tag prédit : 7
+Pourcentage de certitude : 60.6238%
+Tag prédit : 6
+Pourcentage de certitude : 100%
+Tag prédit : 6
+Pourcentage de certitude : 100%
+Tag prédit : 5
+Pourcentage de certitude : 60.8364%
+Tag prédit : 0
+Pourcentage de certitude : 100%
+Tag prédit : 4
+Pourcentage de certitude : 100%
+Tag prédit : 1
+Pourcentage de certitude : 100%
+Tag prédit : 2
+Pourcentage de certitude : 100%
+Tag prédit : 7
+Pourcentage de certitude : 100%
+Tag prédit : 0
+Pourcentage de certitude : 81.1395%
+Tag prédit : 7
+Pourcentage de certitude : 100%
+Tag prédit : 7
+Pourcentage de certitude : 100%
+Tag prédit : 7
+Pourcentage de certitude : 60.9373%
+Tag prédit : 1
+Pourcentage de certitude : 100%
+Tag prédit : 1
+Pourcentage de certitude : 100%
+Tag prédit : 4
+Pourcentage de certitude : 62.3884%
+Tag prédit : 4
+Pourcentage de certitude : 100%
+Tag prédit : 0
+Pourcentage de certitude : 100%
+Tag prédit : 0
+Pourcentage de certitude : 100%
+Tag prédit : 2
+Pourcentage de certitude : 100%
+Tag prédit : 7
+Pourcentage de certitude : 80.5669%
+Tag prédit : 8
+Pourcentage de certitude : 79.9822%
+Tag prédit : 5
+Pourcentage de certitude : 100%
+Tag prédit : 4
+Pourcentage de certitude : 100%
+Tag prédit : 3
+Pourcentage de certitude : 100%
+Tag prédit : 2
+Pourcentage de certitude : 100%
+Tag prédit : 5
+Pourcentage de certitude : 61.3205%
+Tag prédit : 7
+Pourcentage de certitude : 100%
+Tag prédit : 8
+Pourcentage de certitude : 100%
+Tag prédit : 8
+Pourcentage de certitude : 81.0473%
+Tag prédit : 0
+Pourcentage de certitude : 100%
+Tag prédit : 2
+Pourcentage de certitude : 100%
+Tag prédit : 5
+Pourcentage de certitude : 61.9273%
+Tag prédit : 8
+Pourcentage de certitude : 100%
+Tag prédit : 6
+Pourcentage de certitude : 58.9995%
+Tag prédit : 6
+Pourcentage de certitude : 100%
+Tag prédit : 5
+Pourcentage de certitude : 100%
+Tag prédit : 0
+Pourcentage de certitude : 100%
+Tag prédit : 5
+Pourcentage de certitude : 100%
+Tag prédit : 7
+Pourcentage de certitude : 100%
+Tag prédit : 3
+Pourcentage de certitude : 100%
+Tag prédit : 1
+Pourcentage de certitude : 60.7235%
+Tag prédit : 8
+Pourcentage de certitude : 80.9093%
+Tag prédit : 3
+Pourcentage de certitude : 80.4826%
+Tag prédit : 8
+Pourcentage de certitude : 100%
+Tag prédit : 2
+Pourcentage de certitude : 100%
+Tag prédit : 6
+Pourcentage de certitude : 100%
+Tag prédit : 7
+Pourcentage de certitude : 100%
+Tag prédit : 8
+Pourcentage de certitude : 58.2799%
+Tag prédit : 2
+Pourcentage de certitude : 61.9378%
+Tag prédit : 3
+Pourcentage de certitude : 100%
+Tag prédit : 2
+Pourcentage de certitude : 100%
+Tag prédit : 6
+Pourcentage de certitude : 100%
+Tag prédit : 5
+Pourcentage de certitude : 100%
+Tag prédit : 2
+Pourcentage de certitude : 100%
+Tag prédit : 4
+Pourcentage de certitude : 100%
+Tag prédit : 3
+Pourcentage de certitude : 60.8365%
+Tag prédit : 2
+Pourcentage de certitude : 100%

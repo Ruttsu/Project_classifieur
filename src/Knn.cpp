@@ -9,7 +9,7 @@ std::vector<std::pair<float, size_t>> Knn::predict(const Data& test, int k) cons
     std::vector<std::pair<float, size_t>> predictions; // Vecteur de paires de prédiction avec pourcentage et tag prédit
 
     for (int i = 0; i < test.getNbSample(); ++i) {
-        const FeatureVector& featureTest = test[i].getFeatures();
+        const FeatureVector featureTest = test[i].getFeatures();
         std::vector<std::pair<float, size_t>> cosineSimilarities = predictSingle(featureTest, k);
 
         // Collecte des tags des voisins
@@ -64,11 +64,6 @@ std::vector<std::pair<float, size_t>> Knn::predict(const Data& test, int k) cons
     }
 
     return predictions;
-}
-
-
-void Knn::getKnn() const {
-    // À implémenter
 }
 
 std::vector<std::pair<float, size_t>> Knn::predictSingle(const FeatureVector& test, int k) const {

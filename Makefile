@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -std=c++11
+CXXFLAGS = -Wall -std=c++17
 INC_DIR = include
 SRC_DIR = src
 OBJ_DIR = build/objs
