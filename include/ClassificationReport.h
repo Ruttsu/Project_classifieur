@@ -15,6 +15,7 @@ matrice de confusion.
 
 #include <iostream>
 #include <iomanip>
+#include <vector>
 
 using namespace std;
 
@@ -29,6 +30,7 @@ public:
     void displayTabConfusion()const;
     void setTabConfusion(int index_prediction, int index_reality);
     int getTabConfusion(int index_prediction, int index_reality);
+    void displayReport(vector<pair<int, int>> prediction);
     
 };
 

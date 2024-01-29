@@ -1,4 +1,4 @@
-#include "Sample.h"
+#include "../include/Sample.h"
 
 Sample::Sample() {} //constru vide
 
@@ -13,6 +13,6 @@ void Sample::features(float f) {
 }
 
 void Sample::displaySample() const {
-    cout << "Le tag est : " << _tag << "\n" << endl;
+    cout << "Le tag est : " << _tag << endl;
     _features.displayFeatureVector();
 }

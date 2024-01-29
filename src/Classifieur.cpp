@@ -1,83 +1,56 @@
 ﻿// Classifieur.cpp : définit le point d'entrée de l'application.
 
-#include "Classifieur.h"
-#include "Data.h"
-#include "FeatureVector.h"
-#include "KnnEuclidien.h"
-#include "KnnManhattan.h"
-#include "Knncosine.h"
-#include "ClassificationReport.h"
-#include "Application.h"
-#include <fstream> //for file
+#include "../include/Classifieur.h"
+#include "../include/Data.h"
+#include "../include/FeatureVector.h"
+#include "../include/KnnEuclidien.h"
+#include "../include/KnnManhattan.h"
+#include "../include/Knncosine.h"
+#include "../include/ClassificationReport.h"
+#include "../include/Application.h"
+
 
 using namespace std;
 
 int main() {
 
-	//Application app;
-	//app.run();
-	
-/*
-	//TEST de la class classificationReport
-	ClassificationReport test;
+	// Charger les données d'apprentissage depuis le fichier (900 premiers)
+	Data trainingData("../doc/Digits/trainingData.svm", true);
+	cout << "Fin de l'import des données d'apprentissage." << endl;
 
-	test.displayTabConfusion();
+	// Charger les données à prédir depuis le fichier (100 derniers)
+	Data testingData("../doc/Digits/TestingData.svm", true);
+	cout << "Fin de l'import des données à prédir." << endl;
 
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
-    test.setTabConfusion(1,1);
+	// Créer une instance de la classe KnnCosine avec les données d'apprentissage
+	KnnCosine knnCosine(trainingData);
+	KnnEuclidien knnEuclide(trainingData);
+	KnnManhattan knnManhattan(trainingData);
 
-    test.displayTabConfusion();*/
+    ClassificationReport reportCosine;
+	ClassificationReport reporEuclide;
+	ClassificationReport reportManhattan;
 
-    // Charger les données d'apprentissage depuis le fichier
-    Data trainingData("C:/Users/Jerome/Documents/Project_classifieur/doc/Digits/digits.svm", true);
-    std::cout << "Fin de l'import des données d'apprentissage" << std::endl;
+	int k = 10; //tester avec 10 et 15
+	// fonction predict pour obtenir les k plus proches voisins de tout les valeurs de testingData
+	cout << endl << "Cosine : " << endl;
+	vector<pair<int, int>> predictedCosine = knnCosine.predict(testingData,k); // variable pour stocker les voisins
+//	for( const auto& predicted : predictedCosine) reportCosine.setTabConfusion(predicted.first, predicted.second);
+//	reportCosine.displayTabConfusion();
+    reportCosine.displayReport(predictedCosine);
 
-	Data testData("C:/Users/Jerome/Documents/Project_classifieur/doc/Digits/digits_copy.svm", false);
-    std::cout << "Fin de l'import des données de test" << std::endl;
+	cout << endl << "Euclidien : " << endl;
+	vector<pair<int, int>> predictedEuclide = knnEuclide.predict(testingData,k);	//Attention j'ai du mettre héritage public et non protected pour que ça marche
+	for( const auto& predicted : predictedEuclide) reporEuclide.setTabConfusion(predicted.first, predicted.second);
+	reporEuclide.displayTabConfusion();
 
-    // Créer une instance de la classe KnnCosine avec les données d'apprentissage
-    KnnCosine knnClassifier(trainingData);
+	cout << endl << "Manhattan : " << endl;
+	vector<pair<int, int>> predictedManhattan = knnManhattan.predict(testingData,k);	//Attention j'ai du mettre héritage public et non protected pour que ça marche
+	for( const auto& predicted : predictedManhattan) reportManhattan.setTabConfusion(predicted.first, predicted.second);
+	reportManhattan.displayTabConfusion();
 
-    // fonction predictSingle pour obtenir les k plus proches voisins
-    int k = 5; // nombre de voisins
+	// ChooseK() retourne le K plus proche voisi et compre() retourne le tag et la proba de la prédiction
+	//for(int k=0; k<50 ;k++) knnClassifier.compare(knnClassifier.chooseK(nearestNeighborsSort, k));
 
-    std::vector<std::pair<float, size_t>> nearestNeighbors = knnClassifier.predict(testData, k);
-
-    // Spécifiez le chemin complet du fichier de log
-    std::string logFilePath = "C:/Users/Jerome/Documents/Project_classifieur/doc/output/log.txt";
-
-    // Ouvrir le fichier de log en mode écriture (et créer/tronquer le fichier s'il existe)
-    std::ofstream logFile(logFilePath, std::ofstream::trunc);
-
-    if (logFile.is_open()) {
-        // Rediriger la sortie standard vers le fichier
-        std::streambuf* originalStdout = std::cout.rdbuf();  // Sauvegarder le tampon de sortie standard
-        std::cout.rdbuf(logFile.rdbuf());  // Rediriger la sortie standard vers le fichier
-
-    // Écrire les valeurs dans le fichier de log
-    for (const auto& neighbor : nearestNeighbors) {
-        std::cout << "Tag prédit : " << neighbor.second << std::endl;
-        std::cout << "Pourcentage de certitude : " << neighbor.first << "%" << std::endl;
-    }
-
-    // Restaurer la sortie standard
-    std::cout.rdbuf(originalStdout);  // Restaurer le tampon de sortie standard
-
-    // Fermer le fichier de log
-    logFile.close();
-    } else {
-        std::cerr << "Erreur : Impossible d'ouvrir le fichier de log." << std::endl;
-        std::cerr << "Chemin du fichier de log : " << logFilePath << std::endl;
-        return 1;  // Code d'erreur
-    }
+	return 0;
 }
