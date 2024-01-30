@@ -1,5 +1,5 @@
 #include "../include/KnnManhattan.h"
-
+#include <algorithm>
 KnnManhattan::KnnManhattan(const Data& trainingData) : Knn(trainingData) {} // Initialisation via constru de Knn
 KnnManhattan::~KnnManhattan() {}
 

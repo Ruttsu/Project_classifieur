@@ -15,20 +15,36 @@ matrice de confusion.
 
 #include <iostream>
 #include <iomanip>
+#include <vector>
+#include <fstream>
+#include "Knn.h"
 
 using namespace std;
 
 class ClassificationReport{
 
 private:
-    int _tab_confusion[10][10]={};
+    vector<vector<int>> _tab_confusion;
+    int _nbTags;
+
+    int _ok;
+    int _nok;
+
+    float _goodPrediction;
 
 public:
 
+    /*-------Définittion des constructeurs et destructeur------*/
+    ClassificationReport(Data& d);
+
     /*------------Définittion des méthodes---------------*/
     void displayTabConfusion()const;
-    void setTabConfusion(int index_prediction, int index_reality);
+    void setTabConfusion(Knn& knn);
     int getTabConfusion(int index_prediction, int index_reality);
+    void displayReport()const;
+
+    void generationExcel(Knn& train, const Data& test,const int maxk);
+    void resetVariable();
     
 };
 
