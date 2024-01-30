@@ -18,6 +18,8 @@ c'est des données d'appprentissage et 0 si c'est des données a définir.
  représenté
 
  -displayData qui permet d'afficher le contenu de data
+
+ -getNbTags permet de connaitre le nombre de tag differents dans un set de data
 *
 *----------------------------------------------------------------------------*/
 
@@ -42,6 +44,8 @@ public:
     int getNbFeatures()const;
     int getNbSample()const;
     void displayData()const;
+
+    int getNbTags()const;
 
     /*------------Définittion des opérateurs-------------*/
     Sample operator[](unsigned int index)const; //unsigned car la fonction size de la stl renvoie un unsigned

@@ -121,6 +121,7 @@ void Application::run(){
             case 1:
                 cout << "Voici le raport pour knnCosine :" << endl;
                 reportCosine.resetVariable();
+                //reportCosine.generationExcel(knnCosine, testingData, 100);
                 reportCosine.setTabConfusion(knnCosine);
                 reportCosine.displayReport();
                 break;

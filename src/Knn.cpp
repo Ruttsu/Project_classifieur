@@ -11,6 +11,8 @@ void Knn::predict(const Data& test, int k) {
     int error = 0;
     vector<pair<float, size_t>> predictions; // Vecteur de paires de prédiction avec pourcentage et tag prédit
 
+    _prediction.clear();
+
     for (int i = 0; i < test.getNbSample(); ++i) {
         FeatureVector featureTest = test[i].getFeatures();
         vector<pair<float, size_t>> cosineSimilarities = predictSingle(featureTest);
