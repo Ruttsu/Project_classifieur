@@ -17,7 +17,7 @@ void Knn::predict(const Data& test, int k) {
         FeatureVector featureTest = test[i].getFeatures();
         vector<pair<float, size_t>> cosineSimilarities = predictSingle(featureTest);
         // cout << "Le tag réél est " << test[i].getTag() << " : ";
-        predictions = compare(chooseK(cosineSimilarities, k));
+        predictions = compare(cosineSimilarities, k);
         _prediction.push_back(make_pair(predictions[0].second, test[i].getTag()));
 
         if(test[i].getTag() != predictions[0].second) error++;
@@ -50,6 +50,7 @@ vector<pair<float, size_t>> Knn::predictSingle(const FeatureVector& test) const 
     return vector<pair<float, size_t>>();
 }
 
+/*
 vector<pair<float, size_t>> Knn::chooseK(const vector<pair<float, size_t>>& nearestNeighbors, int k) {
 
     vector<pair<float, size_t>> nearestNeighborsPairs;
@@ -59,11 +60,17 @@ vector<pair<float, size_t>> Knn::chooseK(const vector<pair<float, size_t>>& near
     // cout << "Pour K = " << k << ", ";
     return nearestNeighborsPairs;
 }
+*/
 
-vector<pair<float, size_t>> Knn::compare(vector<pair<float, size_t>> nearestNeighbors) {
+vector<pair<float, size_t>> Knn::compare(vector<pair<float, size_t>> nearestNeighbors, int k) {
+
+    vector<pair<float, size_t>> kNearestNeighbors;
+    for (int i = 0; i < k; ++i) {
+        kNearestNeighbors.push_back(make_pair(nearestNeighbors[i].first, nearestNeighbors[i].second));
+    }
 
 	float figures[10] = {0};
-	for (const auto &neighbor : nearestNeighbors) {
+	for (const auto &neighbor : kNearestNeighbors) {
 		double similarityValue = neighbor.first; // La première valeur est la similarité
 		int tag = neighbor.second;
 

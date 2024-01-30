@@ -3,10 +3,10 @@
 //
 
 #include "../include/Application.h"
-#include "Knncosine.h"
-#include "KnnEuclidien.h"
-#include "KnnManhattan.h"
-#include "ClassificationReport.h"
+#include "../include/Knncosine.h"
+#include "../include/KnnEuclidien.h"
+#include "../include/KnnManhattan.h"
+#include "../include/ClassificationReport.h"
 #include <cstdlib>
 
 using namespace std;

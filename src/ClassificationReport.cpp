@@ -81,6 +81,28 @@ void ClassificationReport::generationExcel(Knn& train, const Data& test,const in
 
     vector<float> result;
 
+    vector<pair<float, size_t>> predictions;
+    for (int i = 0; i < 1 ; ++i) {     //test.getNbSample(); ++i) {
+        FeatureVector featureTest = test[i].getFeatures();
+        vector<pair<float, size_t>> cosineSimilarities = train.predictSingle(featureTest);
+
+        for(int k=0; k<maxk; k++) {
+            predictions = train.compare(cosineSimilarities, k);
+            train._prediction.push_back(make_pair(predictions[0].second, test[i].getTag()));
+
+            //setTabConfusion(train); Jsp si il faut le mettre ici ou en bas ?
+            result.push_back(_goodPrediction);
+            csvFile << k << "," << result.back() << endl;
+        }   
+    }
+
+    setTabConfusion(train);
+
+
+
+
+
+/*
     for(int k=0; k<maxk; k++)
     {
         train.predict(test, k);
@@ -91,6 +113,7 @@ void ClassificationReport::generationExcel(Knn& train, const Data& test,const in
         // Écrire les résultats dans le fichier CSV
         csvFile << k << "," << result.back() << "\n";
     }
+*/
 
     csvFile.close();
 }
