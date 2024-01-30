@@ -1,16 +1,31 @@
 #include "../include/ClassificationReport.h"
 
+/*-------Définittion des constructeurs et destructeur------*/
+
+ClassificationReport::ClassificationReport(Data& d)
+{
+    _nbTags=d.getNbTags();
+    _tab_confusion.resize(_nbTags, vector<int>(_nbTags, 0));
+
+    _ok=0;
+    _nok=0;
+}
 
 /*------------Définittion des méthodes---------------*/
 
 void ClassificationReport::displayTabConfusion() const {
     cout<<"Prediction / Reality"<<endl;
-    cout<<"     "<<setw(4)<<"0"<<setw(4)<<"1"<<setw(4)<<"2"<<setw(4)<<"3"<<setw(4)<<"4"<<setw(4)<<"5"<<setw(4)<<"6"<<setw(4)<<"7"<<setw(4)<<"8"<<setw(4)<<"9"<<endl<<endl;
-    for(int i=0; i<10; i++)
+    cout << "     ";
+    for (int i = 0; i < _nbTags; i++) {
+        cout << setw(4) << i;
+    }
+    cout << endl << endl;
+
+    for(int i=0; i<_nbTags; i++)
     {
-        cout<<i;
-        cout<<"    ";
-        for(int j=0; j<10; j++)
+        cout<<i<<"    ";
+
+        for(int j=0; j<_nbTags; j++)
         {
             cout<<setw(4)<<_tab_confusion[i][j]; //setw permet que les lignes restent alignées
         }
@@ -82,13 +97,7 @@ void ClassificationReport::generationExcel(Knn& train, const Data& test,const in
 
 void ClassificationReport::resetVariable() {
 
-    for (int i = 0; i < 10; ++i) {
-        for (int j = 0; j < 10; ++j) {
-            _tab_confusion[i][j] = 0;
-        }
-    }
-
-    _nbTags = 0;
+    _tab_confusion.assign(_nbTags, vector<int>(_nbTags, 0)); //verifier que ca remet tout a 0
     _ok = 0;
     _nok = 0;
     _goodPrediction = 0.0;

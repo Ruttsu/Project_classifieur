@@ -24,7 +24,7 @@ using namespace std;
 class ClassificationReport{
 
 private:
-    int _tab_confusion[10][10]={};
+    vector<vector<int>> _tab_confusion;
     int _nbTags;
 
     int _ok;
@@ -33,6 +33,9 @@ private:
     float _goodPrediction;
 
 public:
+
+    /*-------Définittion des constructeurs et destructeur------*/
+    ClassificationReport(Data& d);
 
     /*------------Définittion des méthodes---------------*/
     void displayTabConfusion()const;

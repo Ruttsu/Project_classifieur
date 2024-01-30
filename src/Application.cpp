@@ -98,12 +98,12 @@ void Application::run(){
 
     //afficher les donner de compréhension proposer les différent type de knn
 
+    ClassificationReport reportCosine(trainingData);
+    ClassificationReport reporEuclide(trainingData);
+    ClassificationReport reportManhattan(trainingData);
+
     if(donneeTest)
     {
-
-        ClassificationReport reportCosine;
-        ClassificationReport reporEuclide;
-        ClassificationReport reportManhattan;
 
         cout << "Menu :" << endl;
         cout << "1. Afficher le raport sur la methode knn cosine" << endl;
@@ -155,6 +155,7 @@ void Application::run(){
     cout << "1. Changer le fichier de test" << endl;
     cout << "2. Changer la valeur de k" << endl;
     cout << "3. Afficher de nouveau les resltats" << endl;
+    cout << "4. Generer un fichier CSV pour determiner le meilleur k" << endl;
     cout << "0. Quitter" << endl;
     cin >> commande;
 
@@ -173,8 +174,36 @@ void Application::run(){
         case 3:
             goto goclalcul;
 
+        case 4:
+            cout << "Choisir la methode de generation :" << endl;
+            cout << "1. methode knn cosine" << endl;
+            cout << "2. methode knn euclidien" << endl;
+            cout << "3. methode knn manhattan" << endl;
+            cout << "0. Quitter" << endl;
+            cin >> commande;
+
+            switch (commande) {
+
+                case 0:
+                    exit(0);
+                case 1:
+                    reportCosine.generationExcel(knnEuclide, testingData, 100);
+                    reportCosine.displayReport();
+                    break;
+                case 2:
+                    reporEuclide.generationExcel(knnEuclide, testingData, 100);
+                    break;
+                case 3:
+                    reportManhattan.generationExcel(knnManhattan, testingData, 100);
+                    break;
+                default :
+                    cout<<"Commande introubale"<<endl;
+                    break;
+            }
+
         default :
             cout<<"Commande introubale"<<endl;
+            break;
 
     }
 
