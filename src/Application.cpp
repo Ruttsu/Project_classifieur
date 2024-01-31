@@ -188,7 +188,7 @@ void Application::run(){
                     exit(0);
                 case 1:
                     reportCosine.generationExcel(knnEuclide, testingData, 100);
-                    reportCosine.displayReport();
+                    reportCosine.displayReport(); //permet de voir que y a un probleme sur les %
                     break;
                 case 2:
                     reporEuclide.generationExcel(knnEuclide, testingData, 100);

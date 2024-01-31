@@ -36,6 +36,7 @@ protected:
     Data _lazy_train; //protected pour etre accessible par KnnAlgo
 
     //lucas
+private:
     vector<pair<int, int>> _prediction;
 };
 
