@@ -1,10 +1,8 @@
-#include "../include/Data.h"
-#include <fstream>
+#include "Data.h"
 
 using namespace std;
 
 /*-------Définittion des constructeurs et destructeur------*/
-Data::Data() {}
 Data::Data(string path, bool donneeApprentissage)
 {
 	ifstream file(path); //ouverture du fichier
@@ -50,7 +48,8 @@ Data::Data(string path, bool donneeApprentissage)
 		_data.push_back(line);
 	}
 }
-/*-------Définittion des constructeurs et destructeur------*/
+
+/*------------Définittion des méthodes---------------*/
 
 void Data::displayData() const {
 
@@ -63,6 +62,18 @@ void Data::displayData() const {
         element.displaySample();
     }
 
+}
+
+int Data::getNbTags() const {
+    int maxTag=0;
+    for(const auto& sample : _data)
+    {
+        if(sample.getTag()>maxTag)
+        {
+            maxTag=sample.getTag();
+        }
+    }
+    return maxTag+1;
 }
 
 /*------------Définittion des opérateurs-------------*/
