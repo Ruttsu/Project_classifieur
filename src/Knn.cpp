@@ -12,6 +12,7 @@ void Knn::predict(const Data& test, int k) {
     vector<pair<float, size_t>> predictions; // Vecteur de paires de prédiction avec pourcentage et tag prédit
 
     _prediction.clear();
+    _predictionConfiance.clear();
 
     for (int i = 0; i < test.getNbSample(); ++i) {
         FeatureVector featureTest = test[i].getFeatures();
@@ -19,6 +20,8 @@ void Knn::predict(const Data& test, int k) {
         // cout << "Le tag réél est " << test[i].getTag() << " : ";
         predictions = compare(chooseK(cosineSimilarities, k));
         _prediction.push_back(make_pair(predictions[0].second, test[i].getTag()));
+
+        _predictionConfiance.push_back(make_pair(predictions[0].second, predictions[0].first));
 
         if(test[i].getTag() != predictions[0].second) error++;
     }
@@ -36,10 +39,9 @@ vector<pair<int, int>> Knn::getPrediction() const
 
 void Knn::displayResult() const {
     int i=1;
-    for(const auto& predicted : _prediction)
+    for(const auto& predicted : _predictionConfiance)
     {
-        cout<<"Sample " << i << " est un ";
-        cout<<predicted.first<<endl;
+        cout<<"Sample " << i << " est un "<<predicted.first<<" avec une probabilité de "<<predicted.second<< "% "<<endl;
         i++;
     }
 }

@@ -38,6 +38,7 @@ protected:
     //lucas
 private:
     vector<pair<int, int>> _prediction;
+    vector<pair<int, float>> _predictionConfiance;
 };
 
 #endif
