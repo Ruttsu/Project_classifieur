@@ -1,10 +1,8 @@
-#include "../include/Data.h"
-#include <fstream>
+#include "Data.h"
 
 using namespace std;
 
 /*-------Définittion des constructeurs et destructeur------*/
-Data::Data() {}
 Data::Data(string path, bool donneeApprentissage)
 {
 	ifstream file(path); //ouverture du fichier

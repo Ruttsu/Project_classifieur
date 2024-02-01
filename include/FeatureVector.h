@@ -8,22 +8,22 @@
 que �a norme et proposer des m�thodes pour l�exploiter. On y retrouves les m�thodes 
 suivantes:
 
- - norme qui calcul la norme du vecteur
+ - norme() qui calcul la norme du vecteur
 
- - getSize qui retourne la taille du vecteur (m�thode inline)
+ - getSize() qui retourne la taille du vecteur (m�thode inline)
 
- - getNorme est une m�thode inline pour obtenir la norme
+ - getNorme() est une m�thode inline pour obtenir la norme
 
  - l'op�rateur * a �t� surcharger, il multiplie deux vecteurs case � case si et seulement si
- il ont la m�me taille -> � r�fl�chire si c'est le comportement souhait�
+ il ont la m�me taille
 
  - l'op�rateur [] a �t� surcharger, il permet d'acceder � la case du vecteur choisi
 
- - addFeatures qui permet d'ajouter des carat�ristiques au vecteur. Cette m�thode est utile
+ - addFeatures() qui permet d'ajouter des carat�ristiques au vecteur. Cette m�thode est utile
  en attendant la d�finition du constructeur de la class. Elle recalcule la norme du vecteur
  a chaque ajout.
 
- - displayFeatures qui permet d'afficher les informations contenu dans la class
+ - displayFeatures() qui permet d'afficher les informations contenu dans la class
 *
 *----------------------------------------------------------------------------*/
 
@@ -35,20 +35,20 @@ using namespace std;
 
 class FeatureVector
 {
-public:
+
 	float _norme;
 	vector <float> _vector;
 
-//public:
+public:
 
-	FeatureVector();
+	FeatureVector()=default;
 	FeatureVector(initializer_list<float> args);
 	/*------------D�finittion des m�thodes---------------*/
 
 	float norme()const;
 	int getSize()const; //m�thode qui peut �tre mise in line
 	float getNorme()const;
-	const std::vector<float>& getVector() const;
+	const vector<float>& getVector() const;
 
 	/*------------D�finittion des op�rateurs-------------*/
 

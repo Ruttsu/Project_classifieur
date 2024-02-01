@@ -1,8 +1,6 @@
 // KnnCosine.cpp
-#include "../include/Knncosine.h"
-#include <vector>
-#include <utility> // pour pair
-#include <algorithm> // pour sort
+#include "Knncosine.h"
+
 
 using namespace std;
 

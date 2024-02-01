@@ -1,13 +1,5 @@
-//
-// Created by lucas on 23/01/2024.
-//
+#include "Application.h"
 
-#include "../include/Application.h"
-#include "Knncosine.h"
-#include "KnnEuclidien.h"
-#include "KnnManhattan.h"
-#include "ClassificationReport.h"
-#include <cstdlib>
 
 using namespace std;
 
@@ -27,7 +19,7 @@ void Application::run(){
     path="";
     cout << "Donnez le chemin du fichiers a tester :" << endl;
     cin >> path;
-    cout << "Connaissez vous ce que represent chaque ligne (0.NON 1.0UI)" << endl;
+    cout << "Connaissez vous ce que represente chaque ligne (0.NON 1.0UI)" << endl;
     cin >> donneeTest;
     Data testingData(path, donneeTest);
 

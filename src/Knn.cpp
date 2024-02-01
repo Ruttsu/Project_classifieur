@@ -1,7 +1,5 @@
 // KNN.cpp
-#include "../include/Knn.h"
-#include <utility> // pour pair
-#include <algorithm> // pour sort
+#include "Knn.h"
 
 Knn::Knn(Data trainingdata) : _lazy_train(trainingdata) {} //constru avec les datas d'entrainement en param
 
@@ -28,10 +26,6 @@ void Knn::predict(const Data& test, int k) {
     // cout << "Nombre d'erreur : " << error << endl << endl;
 }
 
-void Knn::getKnn() const {
-    // À implémenter
-}
-
 vector<pair<int, int>> Knn::getPrediction() const
 {
     return _prediction;
@@ -41,7 +35,7 @@ void Knn::displayResult() const {
     int i=1;
     for(const auto& predicted : _predictionConfiance)
     {
-        cout<<"Sample " << i << " est un "<<predicted.first<<" avec une probabilité de "<<predicted.second<< "% "<<endl;
+        cout<<"Sample " << i << " est un "<<predicted.first<<" avec une probabilite de "<<predicted.second<< "% "<<endl;
         i++;
     }
 }

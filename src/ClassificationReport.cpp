@@ -1,4 +1,4 @@
-#include "../include/ClassificationReport.h"
+#include "ClassificationReport.h"
 
 /*-------Définittion des constructeurs et destructeur------*/
 
@@ -81,7 +81,7 @@ void ClassificationReport::generationExcel(Knn& train, const Data& test,const in
 
     vector<float> result;
 
-    for(int k=0; k<maxk; k++)
+    for(int k=1; k<maxk; k++)
     {
         train.predict(test, k);
         setTabConfusion(train);

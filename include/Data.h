@@ -23,10 +23,10 @@ c'est des données d'appprentissage et 0 si c'est des données a définir.
 *
 *----------------------------------------------------------------------------*/
 
-#include "FeatureVector.h"
 #include "Sample.h"
 #include <vector>
 #include <string>
+#include <fstream>
 
 class Data {
 
@@ -36,7 +36,6 @@ private:
 	int _nb_sample;
 
 public:
-	Data();
     /*-------Définittion des constructeurs et destructeur------*/
 	Data(string path, bool donneeApprentissage);
 

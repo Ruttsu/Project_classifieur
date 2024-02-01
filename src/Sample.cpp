@@ -1,6 +1,4 @@
-#include "../include/Sample.h"
-
-Sample::Sample() {} //constru vide
+#include "Sample.h"
 
 /*------------Définittion des méthodes---------------*/
 void Sample::tag(int t) {
